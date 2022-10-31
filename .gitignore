@@ -1,0 +1,17 @@
+# Composer
+/composer.lock
+/vendor/
+
+# Composer bin plugin
+/vendor-bin/**/vendor
+
+# Node.js
+/package-lock.json
+/node_modules/
+
+# WordPress
+/wordpress/
+/wp-content/
+
+# PHPUnit
+/.phpunit.result.cache
