@@ -288,6 +288,16 @@ class Client {
 	}
 
 	/**
+	 * Get refunds.
+	 *
+	 * @return bool|object
+	 */
+	public function get_refunds() {
+		return $this->get( $this->get_url( 'refunds' ) );
+	}
+
+
+	/**
 	 * Get payment.
 	 *
 	 * @param string               $payment_id Mollie payment ID.
