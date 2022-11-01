@@ -296,6 +296,32 @@ class Client {
 		return $this->get( $this->get_url( 'refunds' ) );
 	}
 
+	/**
+	 * Get chargebacks.
+	 *
+	 * @return bool|object
+	 */
+	public function get_chargebacks() {
+		return $this->get( $this->get_url( 'chargebacks' ) );
+	}
+
+	/**
+	 * Get settlements.
+	 *
+	 * @return bool|object
+	 */
+	public function get_settlements() {
+		return $this->get( $this->get_url( 'settlements' ) );
+	}
+
+	/**
+	 * Get invoices.
+	 *
+	 * @return bool|object
+	 */
+	public function get_invoices() {
+		return $this->get( $this->get_url( 'invoices' ) );
+	}
 
 	/**
 	 * Get payment.
