@@ -8,7 +8,7 @@
  * @package   Pronamic\WordPress\Pay\Gateways\Mollie
  */
 
-namespace Pronamic\WordPress\Pay\Gateways\Mollie;
+namespace Pronamic\WordPress\Mollie;
 
 /**
  * Object access class

@@ -8,12 +8,10 @@
  * @package   Pronamic\WordPress\Pay
  */
 
-namespace Pronamic\WordPress\Pay\Gateways\Mollie;
+namespace Pronamic\WordPress\Mollie;
 
 use Pronamic\WordPress\DateTime\DateTime;
 use Pronamic\WordPress\Http\Facades\Http;
-use Pronamic\WordPress\Pay\Banks\BankAccountDetails;
-use Pronamic\WordPress\Pay\Core\XML\Security;
 
 /**
  * Client class
@@ -53,11 +51,11 @@ class Client {
 			' ',
 			[
 				/**
-				 * Pronamic Pay version.
+				 * Pronamic Mollie version.
 				 * 
 				 * @link https://github.com/pronamic/pronamic-pay/issues/12
 				 */
-				'PronamicPay/' . \pronamic_pay_plugin()->get_version(),
+				'PronamicMollie/1.0.0',
 				/**
 				 * Pronamic - Mollie user agent token.
 				 *
@@ -337,8 +335,8 @@ class Client {
 
 		if ( isset( $response->issuers ) ) {
 			foreach ( $response->issuers as $issuer ) {
-				$id   = Security::filter( $issuer->id );
-				$name = Security::filter( $issuer->name );
+				$id   = $issuer->id;
+				$name = $issuer->name;
 
 				if ( null === $id || null === $name ) {
 					continue;
@@ -417,32 +415,6 @@ class Client {
 	}
 
 	/**
-	 * Create mandate.
-	 *
-	 * @param string             $customer_id           Customer ID.
-	 * @param BankAccountDetails $consumer_bank_details Consumer bank details.
-	 * @return Mandate
-	 * @throws \Exception Throws exception when mandate creation failed.
-	 */
-	public function create_mandate( $customer_id, BankAccountDetails $consumer_bank_details ) {
-		$response = $this->post(
-			$this->get_url(
-				'customers/*customerId*/mandates',
-				[
-					'*customerId*' => $customer_id,
-				]
-			),
-			[
-				'method'          => Methods::DIRECT_DEBIT,
-				'consumerName'    => $consumer_bank_details->get_name(),
-				'consumerAccount' => $consumer_bank_details->get_iban(),
-			]
-		);
-
-		return Mandate::from_json( $response );
-	}
-
-	/**
 	 * Get mandate.
 	 *
 	 * @param string $mandate_id Mollie mandate ID.
@@ -493,108 +465,6 @@ class Client {
 				]
 			)
 		);
-	}
-
-	/**
-	 * Is there a valid mandate for customer?
-	 *
-	 * @param string      $customer_id    Mollie customer ID.
-	 * @param string|null $payment_method Payment method to find mandates for.
-	 * @param string|null $search         Search.
-	 *
-	 * @return string|bool
-	 * @throws \Exception Throws exception for mandates on failed request or invalid response.
-	 */
-	public function has_valid_mandate( $customer_id, $payment_method = null, $search = null ) {
-		$mandates = $this->get_mandates( $customer_id );
-
-		$mollie_method = Methods::transform( $payment_method );
-
-		if ( ! isset( $mandates->_embedded ) ) {
-			throw new \Exception( 'No embedded data in Mollie response.' );
-		}
-
-		foreach ( $mandates->_embedded->mandates as $mandate ) {
-			if ( null !== $mollie_method && $mollie_method !== $mandate->method ) {
-				continue;
-			}
-
-			// Search consumer account or card number.
-			if ( null !== $search ) {
-				switch ( $mollie_method ) {
-					case Methods::DIRECT_DEBIT:
-					case Methods::PAYPAL:
-						if ( $search !== $mandate->details->consumerAccount ) {
-							continue 2;
-						}
-
-						break;
-					case Methods::CREDITCARD:
-						if ( $search !== $mandate->details->cardNumber ) {
-							continue 2;
-						}
-
-						break;
-				}
-			}
-
-			if ( 'valid' === $mandate->status ) {
-				return $mandate->id;
-			}
-		}
-
-		return false;
-	}
-
-	/**
-	 * Get formatted date and time of first valid mandate.
-	 *
-	 * @param string $customer_id    Mollie customer ID.
-	 * @param string $payment_method Payment method.
-	 *
-	 * @return null|DateTime
-	 * @throws \Exception Throws exception for mandates on failed request or invalid response.
-	 */
-	public function get_first_valid_mandate_datetime( $customer_id, $payment_method = null ) {
-		$mandates = $this->get_mandates( $customer_id );
-
-		$mollie_method = Methods::transform( $payment_method );
-
-		if ( ! isset( $mandates->_embedded ) ) {
-			throw new \Exception( 'No embedded data in Mollie response.' );
-		}
-
-		foreach ( $mandates->_embedded->mandates as $mandate ) {
-			if ( $mollie_method !== $mandate->method ) {
-				continue;
-			}
-
-			if ( 'valid' !== $mandate->status ) {
-				continue;
-			}
-
-			if ( ! isset( $valid_mandates ) ) {
-				$valid_mandates = [];
-			}
-
-			// @codingStandardsIgnoreStart
-			$valid_mandates[ $mandate->createdAt ] = $mandate;
-			// @codingStandardsIgnoreEnd
-		}
-
-		if ( isset( $valid_mandates ) ) {
-			ksort( $valid_mandates );
-
-			$mandate = array_shift( $valid_mandates );
-
-			// @codingStandardsIgnoreStart
-			$create_date = new DateTime( $mandate->createdAt );
-			// @codingStandardsIgnoreEnd
-
-			return $create_date;
-		}
-
-		return null;
 	}
 
 	/**

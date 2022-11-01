@@ -8,9 +8,7 @@
  * @package   Pronamic\WordPress\Pay
  */
 
-namespace Pronamic\WordPress\Pay\Gateways\Mollie;
-
-use Pronamic\WordPress\Pay\Core\PaymentMethods;
+namespace Pronamic\WordPress\Mollie;
 
 /**
  * Methods class
@@ -147,76 +145,4 @@ class Methods {
 	 * @var string
 	 */
 	const BELFIUS = 'belfius';
-
-	/**
-	 * Payments methods map.
-	 *
-	 * @var array<string>
-	 */
-	private static $map = [
-		PaymentMethods::APPLE_PAY               => self::APPLE_PAY,
-		PaymentMethods::BANCONTACT              => self::BANCONTACT,
-		PaymentMethods::BANK_TRANSFER           => self::BANKTRANSFER,
-		PaymentMethods::CREDIT_CARD             => self::CREDITCARD,
-		PaymentMethods::DIRECT_DEBIT            => self::DIRECT_DEBIT,
-		PaymentMethods::DIRECT_DEBIT_BANCONTACT => self::DIRECT_DEBIT,
-		PaymentMethods::DIRECT_DEBIT_IDEAL      => self::DIRECT_DEBIT,
-		PaymentMethods::DIRECT_DEBIT_SOFORT     => self::DIRECT_DEBIT,
-		PaymentMethods::EPS                     => self::EPS,
-		PaymentMethods::GIROPAY                 => self::GIROPAY,
-		PaymentMethods::KLARNA_PAY_LATER        => self::KLARNA_PAY_LATER,
-		PaymentMethods::KLARNA_PAY_NOW          => self::KLARNA_PAY_NOW,
-		PaymentMethods::KLARNA_PAY_OVER_TIME    => self::KLARNA_SLICE_IT,
-		PaymentMethods::PAYPAL                  => self::PAYPAL,
-		PaymentMethods::PRZELEWY24              => self::PRZELEWY24,
-		PaymentMethods::SOFORT                  => self::SOFORT,
-		PaymentMethods::IDEAL                   => self::IDEAL,
-		PaymentMethods::KBC                     => self::KBC,
-		PaymentMethods::BELFIUS                 => self::BELFIUS,
-	];
-
-	/**
-	 * Transform WordPress payment method to Mollie method.
-	 *
-	 * @since 1.1.6
-	 *
-	 * @param string|null $payment_method Payment method.
-	 * @param mixed       $default        Default payment method.
-	 * @return string|null
-	 */
-	public static function transform( $payment_method, $default = null ) {
-		if ( ! \is_scalar( $payment_method ) ) {
-			return null;
-		}
-
-		if ( \array_key_exists( $payment_method, self::$map ) ) {
-			return self::$map[ $payment_method ];
-		}
-
-		if ( ! empty( $default ) ) {
-			return $default;
-		}
-
-		return null;
-	}
-
-	/**
-	 * Transform Mollie method to WordPress payment method.
-	 *
-	 * @param string|null $method Mollie method.
-	 * @return string|null
-	 */
-	public static function transform_gateway_method( $method ) {
-		if ( ! \is_scalar( $method ) ) {
-			return null;
-		}
-
-		$payment_method = \array_search( $method, self::$map, true );
-
-		if ( false === $payment_method ) {
-			return null;
-		}
-
-		return \strval( $payment_method );
-	}
 }
