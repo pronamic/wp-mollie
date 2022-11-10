@@ -126,7 +126,7 @@ class Amount implements JsonSerializable {
 	 * @return Money
 	 */
 	public function to_wp() {
-		$transformer = new AmountTransformers();
+		$transformer = new AmountTransformer();
 
 		return $transformer->transform_mollie_to_wp( $this );
 	}
