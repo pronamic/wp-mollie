@@ -552,4 +552,23 @@ class Client {
 
 		return $chargebacks;
 	}
+
+	/**
+	 * Get organization.
+	 *
+	 * @param string $organization_id Mollie organization ID.
+	 * @return object
+	 * @throws Error Throws Error when Mollie error occurs.
+	 * @link https://docs.mollie.com/reference/v2/organizations-api/get-organization
+	 */
+	public function get_organization( $organization_id ) {
+		return $this->get(
+			$this->get_url(
+				'organizations/*id*',
+				[
+					'*id*' => $organization_id,
+				]
+			)
+		);
+	}
 }
