@@ -44,6 +44,6 @@ class AmountTransformer {
 	 * @return Money
 	 */
 	public function transform_mollie_to_wp( Amount $amount ) {
-		return new Money( $amount->get_currency(), $amount->get_value() );
+		return new Money( $amount->get_value(), $amount->get_currency() );
 	}
 }
