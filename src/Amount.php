@@ -15,6 +15,7 @@ use JsonSerializable;
 use stdClass;
 use JsonSchema\Constraints\Constraint;
 use JsonSchema\Validator;
+use Pronamic\WordPress\Money\Money;
 
 /**
  * Amount class
@@ -117,5 +118,16 @@ class Amount implements JsonSerializable {
 			'currency' => $this->currency,
 			'value'    => $this->value,
 		];
+	}
+
+	/**
+	 * Transform Mollie amount object to WordPress money object.
+	 * 
+	 * @return Money
+	 */
+	public function to_wp() {
+		$transformer = new AmountTransformers();
+
+		return $transformer->transform_mollie_to_wp( $this );
 	}
 }
