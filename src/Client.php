@@ -581,7 +581,7 @@ class Client {
 	 * @link https://docs.mollie.com/reference/v2/balances-api/list-balances
 	 */
 	public function get_balances() {
-		return return $this->get( $this->get_url( 'balances' ) );
+		return $this->get( $this->get_url( 'balances' ) );
 	}
 
 	/**
