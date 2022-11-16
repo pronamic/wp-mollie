@@ -571,4 +571,35 @@ class Client {
 			)
 		);
 	}
+
+	/**
+	 * Get balances.
+	 *
+	 * @param string $organization_id Mollie organization ID.
+	 * @return object
+	 * @throws Error Throws Error when Mollie error occurs.
+	 * @link https://docs.mollie.com/reference/v2/balances-api/list-balances
+	 */
+	public function get_balances() {
+		return return $this->get( $this->get_url( 'balances' ) );
+	}
+
+	/**
+	 * Get balance transactions.
+	 *
+	 * @param string $balance_id Mollie balance ID.
+	 * @return object
+	 * @throws Error Throws Error when Mollie error occurs.
+	 * @link https://docs.mollie.com/reference/v2/balances-api/list-balance-transactions
+	 */
+	public function get_balance_transactions( $balance_id ) {
+		return $this->get(
+			$this->get_url(
+				'balances/*balanceId*/transactions',
+				[
+					'*balanceId*' => $balance_id,
+				]
+			)
+		);
+	}
 }
