@@ -607,17 +607,19 @@ class Client {
 	 * Get balance transactions.
 	 *
 	 * @param string $balance_id Mollie balance ID.
+	 * @param array  $parameters Parameters.
 	 * @return object
 	 * @throws Error Throws Error when Mollie error occurs.
 	 * @link https://docs.mollie.com/reference/v2/balances-api/list-balance-transactions
 	 */
-	public function get_balance_transactions( $balance_id ) {
+	public function get_balance_transactions( $balance_id, array $parameters = [] ) {
 		return $this->get(
 			$this->get_url(
 				'balances/*balanceId*/transactions',
 				[
 					'*balanceId*' => $balance_id,
-				]
+				],
+				$parameters
 			)
 		);
 	}
