@@ -585,6 +585,25 @@ class Client {
 	}
 
 	/**
+	 * Get balance.
+	 *
+	 * @param string $balance_id Mollie balance ID.
+	 * @return object
+	 * @throws Error Throws Error when Mollie error occurs.
+	 * @link https://docs.mollie.com/reference/v2/balances-api/get-balance
+	 */
+	public function get_balance( $balance_id ) {
+		return $this->get(
+			$this->get_url(
+				'balances/*balanceId*',
+				[
+					'*balanceId*' => $balance_id,
+				]
+			)
+		);
+	}
+
+	/**
 	 * Get balance transactions.
 	 *
 	 * @param string $balance_id Mollie balance ID.
