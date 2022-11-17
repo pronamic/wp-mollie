@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<ruleset name="Mollie API client for WordPress">
+	<file>.</file>
+
+	<rule ref="PronamicWP">
+		<exclude name="WordPressVIPMinimum.Performance.FetchingRemoteData.FileGetContentsUnknown" />
+	</rule>
+</ruleset>
