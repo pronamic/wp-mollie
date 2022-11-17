@@ -25,7 +25,7 @@ class Address implements JsonSerializable {
 	 *
 	 * @var string|null
 	 */
-	private ?string $organization_name = null;
+	public ?string $organization_name = null;
 
 	/**
 	 * The title of the person, for example Mr. or Mrs.
@@ -63,7 +63,7 @@ class Address implements JsonSerializable {
 	 * @link https://en.wikipedia.org/wiki/E.164
 	 * @var string|null
 	 */
-	private ?string $phone = null;
+	public ?string $phone = null;
 
 	/**
 	 * Street and number.
@@ -77,14 +77,14 @@ class Address implements JsonSerializable {
 	 *
 	 * @var string|null
 	 */
-	private ?string $street_additional = null;
+	public ?string $street_additional = null;
 
 	/**
 	 * Postal code.
 	 *
 	 * @var string|null
 	 */
-	private ?string $postal_code = null;
+	public ?string $postal_code = null;
 
 	/**
 	 * City.
@@ -98,7 +98,7 @@ class Address implements JsonSerializable {
 	 *
 	 * @var string|null
 	 */
-	private ?string $region = null;
+	public ?string $region = null;
 
 	/**
 	 * The country of the address in ISO 3166-1 alpha-2 format.
