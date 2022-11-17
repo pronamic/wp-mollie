@@ -3,6 +3,10 @@
 <ruleset name="Mollie API client for WordPress">
 	<file>.</file>
 
+	<rule ref="WordPress.PHP.DisallowShortTernary.Found">
+		<exclude-pattern>tests/wp-config.php</exclude-pattern>
+	</rule>
+
 	<rule ref="PronamicWP">
 		<exclude name="WordPressVIPMinimum.Performance.FetchingRemoteData.FileGetContentsUnknown" />
 	</rule>

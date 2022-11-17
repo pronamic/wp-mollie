@@ -389,7 +389,7 @@ class Client {
 	 * Get all payment methods.
 	 *
 	 * @link https://docs.mollie.com/reference/v2/methods-api/list-all-methods
-	 * @return array
+	 * @return object
 	 */
 	public function get_all_payment_methods() {
 		$response = $this->get( $this->get_url( 'methods/all' ) );
@@ -453,8 +453,8 @@ class Client {
 	/** 
 	 * Create mandate.  
 	 *  
-	 * @param string $customer_id Customer ID.
-	 * @param array  $parameters  Parameters.
+	 * @param string                $customer_id Customer ID.
+	 * @param array<string, string> $parameters  Parameters.
 	 * @return Mandate  
 	 * @throws \Exception Throws exception when mandate creation failed.    
 	 */ 
@@ -597,7 +597,6 @@ class Client {
 	/**
 	 * Get balances.
 	 *
-	 * @param string $organization_id Mollie organization ID.
 	 * @return object
 	 * @throws Error Throws Error when Mollie error occurs.
 	 * @link https://docs.mollie.com/reference/v2/balances-api/list-balances
@@ -628,8 +627,8 @@ class Client {
 	/**
 	 * Get balance transactions.
 	 *
-	 * @param string $balance_id Mollie balance ID.
-	 * @param array  $parameters Parameters.
+	 * @param string                $balance_id  Mollie balance ID.
+	 * @param array<string, string> $parameters  Parameters.
 	 * @return object
 	 * @throws Error Throws Error when Mollie error occurs.
 	 * @link https://docs.mollie.com/reference/v2/balances-api/list-balance-transactions
