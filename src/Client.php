@@ -5,7 +5,7 @@
  * @author    Pronamic <info@pronamic.eu>
  * @copyright 2005-2022 Pronamic
  * @license   GPL-3.0-or-later
- * @package   Pronamic\WordPress\Pay
+ * @package   Pronamic\WordPress\Mollie
  */
 
 namespace Pronamic\WordPress\Mollie;
@@ -41,12 +41,35 @@ class Client {
 	}
 
 	/**
+	 * Get version.
+	 * 
+	 * @return string
+	 */
+	private function get_version() {
+		$package_file = __DIR__ . '/../package.json';
+
+		$package_json = \file_get_contents( $package_file, true );
+
+		$package_data = \json_decode( $package_json );
+
+		if ( ! is_object( $package_data ) ) {
+			return '';
+		}
+
+		if ( ! property_exists( $package_data, 'version' ) ) {
+			return '';
+		}
+
+		return $package_data->version;
+	}
+
+	/**
 	 * Get user agent value for requests to Mollie.
 	 * 
 	 * @link https://github.com/pronamic/wp-pronamic-pay-mollie/issues/13
 	 * @return string
 	 */
-	private function get_user_agent() {
+	public function get_user_agent() {
 		return implode(
 			' ',
 			[
@@ -55,7 +78,7 @@ class Client {
 				 * 
 				 * @link https://github.com/pronamic/pronamic-pay/issues/12
 				 */
-				'PronamicMollie/1.0.0',
+				'PronamicMollie/' . $this->get_version(),
 				/**
 				 * Pronamic - Mollie user agent token.
 				 *
