@@ -8,7 +8,7 @@
  * @package   Pronamic\WordPress\Pay
  */
 
-namespace Pronamic\WordPress\Pay\Gateways\Mollie;
+namespace Pronamic\WordPress\Mollie;
 
 use Pronamic\WordPress\Money\Money;
 use Yoast\PHPUnitPolyfills\TestCases\TestCase;
@@ -32,11 +32,13 @@ class AmountTransformerTest extends TestCase {
 	 * @param string $expected_value    Expected value.
 	 * @dataProvider amount_provider
 	 */
-	public function test_transform( $money, $expected_currency, $expected_value ) {
-		$amount = AmountTransformer::transform( $money );
+	public function test_transform( $pronamic_money, $expected_currency, $expected_value ) {
+		$amount_transformer = new AmountTransformer();
 
-		$this->assertEquals( $expected_currency, $amount->get_currency() );
-		$this->assertEquals( $expected_value, $amount->get_value() );
+		$mollie_amount = $amount_transformer->transform_wp_to_mollie( $pronamic_money );
+
+		$this->assertEquals( $expected_currency, $mollie_amount->get_currency() );
+		$this->assertEquals( $expected_value, $mollie_amount->get_value() );
 	}
 
 	/**

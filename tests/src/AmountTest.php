@@ -8,7 +8,7 @@
  * @package   Pronamic\WordPress\Pay
  */
 
-namespace Pronamic\WordPress\Pay\Gateways\Mollie;
+namespace Pronamic\WordPress\Mollie;
 
 use Exception;
 use Yoast\PHPUnitPolyfills\TestCases\TestCase;

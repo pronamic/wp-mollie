@@ -17,21 +17,3 @@ require_once __DIR__ . '/../vendor/autoload.php';
  * WorDBless.
  */
 \WorDBless\Load::load();
-
-/**
- * Psalm.
- */
-if ( defined( 'PSALM_VERSION' ) ) {
-	return;
-}
-
-/**
- * Plugin.
- */
-$pronamic_pay_plugin = \Pronamic\WordPress\Pay\Plugin::instance(
-	[
-		'action_scheduler' => __DIR__ . '/../vendor/woocommerce/action-scheduler/action-scheduler.php',
-	]
-);
-
-$pronamic_pay_plugin->plugins_loaded();

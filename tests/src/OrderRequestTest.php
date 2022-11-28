@@ -8,7 +8,7 @@
  * @package   Pronamic\WordPress\Pay
  */
 
-namespace Pronamic\WordPress\Pay\Gateways\Mollie;
+namespace Pronamic\WordPress\Mollie;
 
 use Pronamic\WordPress\Pay\Address as Core_Address;
 use Pronamic\WordPress\Pay\ContactName;
@@ -54,24 +54,21 @@ class OrderRequestTest extends TestCase {
 			'nl_NL'
 		);
 
-		$billing_address = new Core_Address();
+		$address = new Address(
+			'Remco',
+			'Tolsma',
+			'info@pronamic.nl',
+			'Burgemeester Wuiteweg 39b',
+			'Drachten',
+			'NL'
+		);
 
-		$name = new ContactName();
+		$address->organization_name = 'Pronamic';
+		$address->postal_code       = '9203 KA';
+		$address->phone             = '085 40 11 580';
+		$address->region            = 'Friesland';
 
-		$name->set_first_name( 'Remco' );
-		$name->set_last_name( 'Tolsma' );
-
-		$billing_address->set_name( $name );
-		$billing_address->set_company_name( 'Pronamic' );
-		$billing_address->set_email( 'info@pronamic.nl' );
-		$billing_address->set_line_1( 'Burgemeester Wuiteweg 39b' );
-		$billing_address->set_city( 'Drachten' );
-		$billing_address->set_country_code( 'NL' );
-		$billing_address->set_postal_code( '9203 KA' );
-		$billing_address->set_region( 'Friesland' );
-		$billing_address->set_phone( '085 40 11 580' );
-
-		$request->set_billing_address( Address::from_wp_address( $billing_address ) );
+		$request->set_billing_address( $address );
 
 		$request->redirect_url = 'https://example.com/mollie-redirect/';
 		$request->webhook_url  = 'https://example.com/mollie-webhook/';

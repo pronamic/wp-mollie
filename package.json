@@ -1,0 +1,34 @@
+{
+  "name": "@pronamic/wp-mollie",
+  "version": "1.0.0",
+  "description": "Mollie library for WordPress.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pronamic/wp-mollie.git"
+  },
+  "keywords": [
+    "mollie",
+    "php",
+    "api",
+    "client",
+    "wordpress",
+    "wp"
+  ],
+  "author": {
+    "name": "Pronamic",
+    "email": "info@pronamic.eu",
+    "url": "https://www.pronamic.eu/"
+  },
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/pronamic/wp-mollie/issues"
+  },
+  "homepage": "https://github.com/pronamic/wp-mollie#readme"
+}
