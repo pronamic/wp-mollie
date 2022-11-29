@@ -1,1 +1,1 @@
-# wp-mollie
+# Mollie API client for WordPress
