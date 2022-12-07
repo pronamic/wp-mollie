@@ -160,9 +160,9 @@ class Customer implements JsonSerializable {
 	/**
 	 * JSON serialize.
 	 *
-	 * @return mixed
+	 * @return object
 	 */
-	public function jsonSerialize() {
+	public function jsonSerialize(): object {
 		$object_builder = new ObjectBuilder();
 
 		$object_builder->set_optional( 'name', $this->get_name() );

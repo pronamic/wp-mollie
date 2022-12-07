@@ -319,9 +319,9 @@ class PaymentRequest implements JsonSerializable {
 	 * JSON serialize.
 	 *
 	 * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
-	 * @return mixed
+	 * @return object
 	 */
-	public function jsonSerialize() {
+	public function jsonSerialize(): object {
 		$object_builder = new ObjectBuilder();
 
 		// General.

@@ -108,9 +108,9 @@ class Amount implements JsonSerializable {
 	 * JSON serialize.
 	 *
 	 * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
-	 * @return mixed
+	 * @return object
 	 */
-	public function jsonSerialize() {
+	public function jsonSerialize(): object {
 		return (object) [
 			'currency' => $this->currency,
 			'value'    => $this->value,

@@ -53,9 +53,9 @@ class Lines implements JsonSerializable {
 	/**
 	 * JSON serialize.
 	 *
-	 * @return mixed
+	 * @return array
 	 */
-	public function jsonSerialize() {
+	public function jsonSerialize(): array {
 		$objects = array_map(
 			/**
 			 * Get JSON for payment line.
