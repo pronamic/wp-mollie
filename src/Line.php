@@ -134,7 +134,7 @@ class Line implements JsonSerializable {
 	 *
 	 * @param string|null $type Type.
 	 */
-	public function set_type( ?string $type ) : void {
+	public function set_type( ?string $type ): void {
 		$this->type = $type;
 	}
 
@@ -143,7 +143,7 @@ class Line implements JsonSerializable {
 	 *
 	 * @param null|string $category Product category.
 	 */
-	public function set_category( ?string $category ) : void {
+	public function set_category( ?string $category ): void {
 		$this->category = $category;
 	}
 
@@ -152,7 +152,7 @@ class Line implements JsonSerializable {
 	 *
 	 * @param Amount|null $discount_amount Discount amount.
 	 */
-	public function set_discount_amount( ?Amount $discount_amount = null ) : void {
+	public function set_discount_amount( ?Amount $discount_amount = null ): void {
 		$this->discount_amount = $discount_amount;
 	}
 
@@ -161,7 +161,7 @@ class Line implements JsonSerializable {
 	 *
 	 * @param string|null $sku SKU.
 	 */
-	public function set_sku( ?string $sku ) : void {
+	public function set_sku( ?string $sku ): void {
 		$this->sku = $sku;
 	}
 
@@ -170,7 +170,7 @@ class Line implements JsonSerializable {
 	 *
 	 * @param string|null $image_url Image url.
 	 */
-	public function set_image_url( ?string $image_url ) : void {
+	public function set_image_url( ?string $image_url ): void {
 		$this->image_url = $image_url;
 	}
 
@@ -179,7 +179,7 @@ class Line implements JsonSerializable {
 	 *
 	 * @param string|null $product_url Product URL.
 	 */
-	public function set_product_url( ?string $product_url = null ) : void {
+	public function set_product_url( ?string $product_url = null ): void {
 		$this->product_url = $product_url;
 	}
 

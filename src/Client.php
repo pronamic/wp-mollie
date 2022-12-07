@@ -283,7 +283,7 @@ class Client {
 	 * @param string $order_id Order ID.
 	 * @return Order
 	 */
-	public function get_order( string $order_id ) : Order {
+	public function get_order( string $order_id ): Order {
 		$response = $this->get(
 			$this->get_url(
 				'orders/*id*',

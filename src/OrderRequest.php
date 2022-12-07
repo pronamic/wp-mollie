@@ -156,7 +156,7 @@ class OrderRequest implements JsonSerializable {
 	 *
 	 * @param Address|null $billing_address Billing address.
 	 */
-	public function set_billing_address( ?Address $billing_address ) : void {
+	public function set_billing_address( ?Address $billing_address ): void {
 		$this->billing_address = $billing_address;
 	}
 
@@ -165,7 +165,7 @@ class OrderRequest implements JsonSerializable {
 	 *
 	 * @param Address|null $shipping_address Shipping address.
 	 */
-	public function set_shipping_address( ?Address $shipping_address ) : void {
+	public function set_shipping_address( ?Address $shipping_address ): void {
 		$this->shipping_address = $shipping_address;
 	}
 
@@ -174,7 +174,7 @@ class OrderRequest implements JsonSerializable {
 	 *
 	 * @param DateTimeInterface|null $consumer_date_of_birth Consumer date of birth.
 	 */
-	public function set_consumer_date_of_birth( ?DateTimeInterface $consumer_date_of_birth ) : void {
+	public function set_consumer_date_of_birth( ?DateTimeInterface $consumer_date_of_birth ): void {
 		$this->consumer_date_of_birth = $consumer_date_of_birth;
 	}
 
@@ -183,7 +183,7 @@ class OrderRequest implements JsonSerializable {
 	 *
 	 * @param string|null $redirect_url Redirect URL.
 	 */
-	public function set_redirect_url( ?string $redirect_url ) : void {
+	public function set_redirect_url( ?string $redirect_url ): void {
 		$this->redirect_url = $redirect_url;
 	}
 
@@ -192,7 +192,7 @@ class OrderRequest implements JsonSerializable {
 	 *
 	 * @param string|null $webhook_url Webhook URL.
 	 */
-	public function set_webhook_url( ?string $webhook_url ) : void {
+	public function set_webhook_url( ?string $webhook_url ): void {
 		$this->webhook_url = $webhook_url;
 	}
 
@@ -201,7 +201,7 @@ class OrderRequest implements JsonSerializable {
 	 *
 	 * @param array<string>|string|null $method Method.
 	 */
-	public function set_method( $method ) : void {
+	public function set_method( $method ): void {
 		$this->method = $method;
 	}
 
@@ -211,7 +211,7 @@ class OrderRequest implements JsonSerializable {
 	 * @param array<string, string>|null $payment Payment specific parameters.
 	 * @link https://docs.mollie.com/reference/v2/orders-api/create-order#payment-specific-parameters
 	 */
-	public function set_payment( ?array $payment ) : void {
+	public function set_payment( ?array $payment ): void {
 		$this->payment = $payment;
 	}
 
@@ -223,7 +223,7 @@ class OrderRequest implements JsonSerializable {
 	 * @param mixed $metadata Metadata.
 	 * @return void
 	 */
-	public function set_metadata( $metadata = null ) : void {
+	public function set_metadata( $metadata = null ): void {
 		$this->metadata = $metadata;
 	}
 

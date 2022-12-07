@@ -33,7 +33,7 @@ class Order extends BaseResource {
 	 *
 	 * @return Payment[]|null
 	 */
-	public function get_payments() : ?array {
+	public function get_payments(): ?array {
 		return $this->payments;
 	}
 
@@ -42,7 +42,7 @@ class Order extends BaseResource {
 	 *
 	 * @param Payment[]|null $payments Payments.
 	 */
-	public function set_payments( ?array $payments ) : void {
+	public function set_payments( ?array $payments ): void {
 		$this->payments = $payments;
 	}
 
@@ -51,7 +51,7 @@ class Order extends BaseResource {
 	 *
 	 * @return string
 	 */
-	public function get_status() : string {
+	public function get_status(): string {
 		return $this->status;
 	}
 

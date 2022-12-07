@@ -27,7 +27,7 @@ class AmountTransformerTest extends TestCase {
 	/**
 	 * Test transform.
 	 *
-	 * @param Money  $money             Pronamic money.
+	 * @param Money  $pronamic_money    Pronamic money.
 	 * @param string $expected_currency Expected currency.
 	 * @param string $expected_value    Expected value.
 	 * @dataProvider amount_provider
