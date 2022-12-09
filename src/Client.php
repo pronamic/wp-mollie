@@ -42,7 +42,7 @@ class Client {
 
 	/**
 	 * Get version.
-	 * 
+	 *
 	 * @return string
 	 */
 	private function get_version() {
@@ -65,7 +65,7 @@ class Client {
 
 	/**
 	 * Get user agent value for requests to Mollie.
-	 * 
+	 *
 	 * @link https://github.com/pronamic/wp-pronamic-pay-mollie/issues/13
 	 * @return string
 	 */
@@ -75,7 +75,7 @@ class Client {
 			[
 				/**
 				 * Pronamic Mollie version.
-				 * 
+				 *
 				 * @link https://github.com/pronamic/pronamic-pay/issues/12
 				 */
 				'PronamicMollie/' . $this->get_version(),
@@ -473,26 +473,26 @@ class Client {
 		}
 	}
 
-	/** 
-	 * Create mandate.  
-	 *  
+	/**
+	 * Create mandate.
+	 *
 	 * @param string                $customer_id Customer ID.
 	 * @param array<string, string> $parameters  Parameters.
-	 * @return Mandate  
-	 * @throws \Exception Throws exception when mandate creation failed.    
-	 */ 
-	public function create_mandate( $customer_id, array $parameters = [] ) {    
-		$response = $this->post(    
-			$this->get_url( 
-				'customers/*customerId*/mandates',  
-				[   
-					'*customerId*' => $customer_id, 
-				]   
+	 * @return Mandate
+	 * @throws \Exception Throws exception when mandate creation failed.
+	 */
+	public function create_mandate( $customer_id, array $parameters = [] ) {
+		$response = $this->post(
+			$this->get_url(
+				'customers/*customerId*/mandates',
+				[
+					'*customerId*' => $customer_id,
+				]
 			),
 			$parameters
 		);
 
-		return Mandate::from_json( $response ); 
+		return Mandate::from_json( $response );
 	}
 
 	/**

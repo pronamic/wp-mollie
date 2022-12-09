@@ -119,7 +119,7 @@ class Amount implements JsonSerializable {
 
 	/**
 	 * Transform Mollie amount object to WordPress money object.
-	 * 
+	 *
 	 * @return Money
 	 */
 	public function to_wp() {
