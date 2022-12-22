@@ -33,7 +33,8 @@
         "automattic/wordbless": "^0.4.0",
         "pronamic/wp-coding-standards": "^1.3",
         "yoast/phpunit-polyfills": "^1.0",
-        "roots/wordpress": "^6.0"
+        "roots/wordpress": "^6.0",
+        "pronamic/wp-deployer": "^1.2"
     },
     "scripts": {
         "coveralls": "vendor/bin/php-coveralls -v",
