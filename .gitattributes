@@ -1,0 +1,11 @@
+*.http text eol=crlf
+
+/documentation/    export-ignore
+/tests             export-ignore
+/.gitattributes    export-ignore
+/.gitignore        export-ignore
+/package.json      export-ignore
+/phpcs.xml.dist    export-ignore
+/phpunit.xml.dist  export-ignore
+
+vendor-bin/**/composer.lock binary
