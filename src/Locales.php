@@ -15,6 +15,13 @@ namespace Pronamic\WordPress\Mollie;
  */
 class Locales {
 	/**
+	 * English (Great Britain).
+	 *
+	 * @var string
+	 */
+	const EN_GB = 'en_GB';
+
+	/**
 	 * English (US).
 	 *
 	 * @var string
