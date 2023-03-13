@@ -10,13 +10,24 @@
 
 namespace Pronamic\WordPress\Mollie;
 
+use JsonSchema\Constraints\Constraint;
+use JsonSchema\Exception\InvalidArgumentException;
+use JsonSchema\Validator;
 use JsonSerializable;
 use Pronamic\WordPress\Number\Number;
+use stdClass;
 
 /**
  * Line class
  */
 class Line implements JsonSerializable {
+	/**
+	 * The order line's unique identifier.
+	 *
+	 * @var string|null
+	 */
+	private $id;
+
 	/**
 	 * The type of product bought, for example, a physical or a digital product.
 	 *
@@ -130,6 +141,24 @@ class Line implements JsonSerializable {
 	}
 
 	/**
+	 * Get identifier.
+	 *
+	 * @return string|null
+	 */
+	public function get_id(): ?string {
+		return $this->id;
+	}
+
+	/**
+	 * Set identifier.
+	 *
+	 * @param string|null $id Identifier.
+	 */
+	public function set_id( ?string $id ): void {
+		$this->id = $id;
+	}
+
+	/**
 	 * Set type.
 	 *
 	 * @param string|null $type Type.
@@ -184,6 +213,55 @@ class Line implements JsonSerializable {
 	}
 
 	/**
+	 * Create line from object.
+	 *
+	 * @param stdClass $object Object.
+	 * @return Line
+	 */
+	public static function from_object( stdClass $object ) {
+		$object_access = new ObjectAccess( $object );
+
+		$line = new self(
+			$object_access->get_property( 'name' ),
+			$object_access->get_property( 'quantity' ),
+			Amount::from_object( $object_access->get_property( 'unitPrice' ) ),
+			Amount::from_object( $object_access->get_property( 'totalAmount' ) ),
+			Number::from_string( $object_access->get_property( 'vatRate' ) ),
+			Amount::from_object( $object_access->get_property( 'vatAmount' ) )
+		);
+
+		$line->set_id( $object_access->get_property( 'id' ) );
+		$line->set_sku( $object_access->get_property( 'sku' ) );
+
+		return $line;
+	}
+
+	/**
+	 * Create amount from JSON string.
+	 *
+	 * @param object $json JSON object.
+	 * @return Line
+	 * @throws InvalidArgumentException Throws invalid argument exception when input JSON is not an object.
+	 */
+	public static function from_json( $json ) {
+		if ( ! is_object( $json ) ) {
+			throw new InvalidArgumentException( 'JSON value must be an object.' );
+		}
+
+		$validator = new Validator();
+
+		$validator->validate(
+			$json,
+			(object) [
+				'$ref' => 'file://' . realpath( __DIR__ . '/../json-schemas/line.json' ),
+			],
+			Constraint::CHECK_MODE_EXCEPTIONS
+		);
+
+		return self::from_object( $json );
+	}
+
+	/**
 	 * JSON serialize.
 	 *
 	 * @return object
@@ -191,6 +269,7 @@ class Line implements JsonSerializable {
 	public function jsonSerialize(): object {
 		$object_builder = new ObjectBuilder();
 
+		$object_builder->set_optional( 'id', $this->id );
 		$object_builder->set_optional( 'type', $this->type );
 		$object_builder->set_optional( 'category', $this->category );
 		$object_builder->set_required( 'name', $this->name );

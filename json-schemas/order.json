@@ -17,11 +17,17 @@
 			"description": "The status of the order.",
 			"type": "string",
 			"enum": [ "created", "paid", "authorized", "canceled", "shipping", "completed", "expired" ]
+		},
+		"lines": {
+			"description": "An array of order line objects.",
+			"type": "array",
+			"$ref": "line.json"
 		}
 	},
 	"required": [
 		"resource",
 		"id",
-		"status"
+		"status",
+		"lines"
 	]
 }
