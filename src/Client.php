@@ -549,7 +549,7 @@ class Client {
 	}
 
 	/**
-	 * Create refund.
+	 * Create payment refund.
 	 *
 	 * @param string        $payment_id     Mollie payment ID.
 	 * @param RefundRequest $refund_request Refund request.
@@ -561,6 +561,27 @@ class Client {
 				'payments/*id*/refunds',
 				[
 					'*id*' => $payment_id,
+				]
+			),
+			$refund_request
+		);
+
+		return Refund::from_json( $response );
+	}
+
+	/**
+	 * Create order refund.
+	 *
+	 * @param string             $order_id       Mollie order ID.
+	 * @param OrderRefundRequest $refund_request Order refund request.
+	 * @return Refund
+	 */
+	public function create_order_refund( string $order_id, OrderRefundRequest $refund_request ): Refund {
+		$response = $this->post(
+			$this->get_url(
+				'orders/*orderId*/refunds',
+				[
+					'*orderId*' => $order_id,
 				]
 			),
 			$refund_request
