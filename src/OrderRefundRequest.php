@@ -22,7 +22,7 @@ class OrderRefundRequest implements JsonSerializable {
 	 *
 	 * @var RefundLines
 	 */
-	private RefundLines $lines;
+	private OrderRefundLinesRequest $lines;
 
 	/**
 	 * The description of the refund you are creating. This will be shown to the consumer
@@ -47,28 +47,9 @@ class OrderRefundRequest implements JsonSerializable {
 	/**
 	 * Construct Mollie order refund request object.
 	 *
-	 * @param RefundLines $lines Lines.
-	 * @return void
+	 * @param OrderRefundLinesRequest $lines Lines.
 	 */
-	public function __construct( RefundLines $lines ) {
-		$this->lines = $lines;
-	}
-
-	/**
-	 * Get order lines.
-	 *
-	 * @return RefundLines
-	 */
-	public function get_lines(): RefundLines {
-		return $this->lines;
-	}
-
-	/**
-	 * Set order lines.
-	 *
-	 * @param RefundLines $lines Order lines.
-	 */
-	public function set_lines( RefundLines $lines ): void {
+	public function __construct( OrderRefundLinesRequest $lines ) {
 		$this->lines = $lines;
 	}
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * Refund Line
+ * Order refund line request
  *
  * @author    Pronamic <info@pronamic.eu>
  * @copyright 2005-2023 Pronamic
@@ -17,9 +17,9 @@ use JsonSerializable;
 use stdClass;
 
 /**
- * Refund line class
+ * Order refund line request class
  */
-class RefundLine implements JsonSerializable {
+class OrderRefundLineRequest implements JsonSerializable {
 	/**
 	 * The order line's unique identifier.
 	 *
@@ -30,27 +30,25 @@ class RefundLine implements JsonSerializable {
 	/**
 	 * Quantity.
 	 *
-	 * @var int
+	 * @var int|null
 	 */
-	private int $quantity;
+	private ?int $quantity;
 
 	/**
 	 * The amount that you want to refund. In almost all cases, Mollie can determine the amount automatically. The
 	 * amount is required only if you are partially refunding an order line which has a non-zero discount amount.
 	 *
-	 * @var Amount
+	 * @var Amount|null
 	 */
-	private Amount $amount;
+	private ?Amount $amount;
 
 	/**
-	 * Refund line constructor.
+	 * Order refund line request constructor.
 	 *
 	 * @param string $id Order line identifier.
 	 */
 	public function __construct( string $id ) {
-		$this->id       = $id;
-		$this->quantity = 0;
-		$this->amount   = new Amount( 'EUR', 0 );
+		$this->id = $id;
 	}
 
 	/**
@@ -60,15 +58,6 @@ class RefundLine implements JsonSerializable {
 	 */
 	public function get_id(): string {
 		return $this->id;
-	}
-
-	/**
-	 * Set identifier.
-	 *
-	 * @param string $id Identifier.
-	 */
-	public function set_id( string $id ): void {
-		$this->id = $id;
 	}
 
 	/**
@@ -92,7 +81,7 @@ class RefundLine implements JsonSerializable {
 	/**
 	 * Get amount.
 	 *
-	 * @return Amount
+	 * @return Amount|null
 	 */
 	public function get_amount(): Amount {
 		return $this->amount;
@@ -101,54 +90,10 @@ class RefundLine implements JsonSerializable {
 	/**
 	 * Set amount.
 	 *
-	 * @param Amount $amount Amount to refund.
+	 * @param Amount|null $amount Amount to refund.
 	 */
-	public function set_amount( Amount $amount ): void {
+	public function set_amount( ?Amount $amount ): void {
 		$this->amount = $amount;
-	}
-
-	/**
-	 * Create refund line from object.
-	 *
-	 * @param stdClass $object Object.
-	 * @return RefundLine
-	 */
-	public static function from_object( stdClass $object ) {
-		$object_access = new ObjectAccess( $object );
-
-		$line = new self(
-			$object_access->get_property( 'id' )
-		);
-
-		$line->set_quantity( $object_access->get_property( 'quantity' ) );
-		$line->set_amount( $object_access->get_property( 'amount' ) );
-
-		return $line;
-	}
-
-	/**
-	 * Create amount from JSON string.
-	 *
-	 * @param object $json JSON object.
-	 * @return RefundLine
-	 * @throws InvalidArgumentException Throws invalid argument exception when input JSON is not an object.
-	 */
-	public static function from_json( $json ) {
-		if ( ! is_object( $json ) ) {
-			throw new InvalidArgumentException( 'JSON value must be an object.' );
-		}
-
-		$validator = new Validator();
-
-		$validator->validate(
-			$json,
-			(object) [
-				'$ref' => 'file://' . realpath( __DIR__ . '/../json-schemas/refund-line.json' ),
-			],
-			Constraint::CHECK_MODE_EXCEPTIONS
-		);
-
-		return self::from_object( $json );
 	}
 
 	/**
@@ -161,7 +106,7 @@ class RefundLine implements JsonSerializable {
 
 		$object_builder->set_required( 'id', $this->id );
 		$object_builder->set_optional( 'quantity', $this->quantity );
-		$object_builder->set_optional( 'amount', $this->amount->jsonSerialize() );
+		$object_builder->set_optional( 'amount', null === $this->amount ? null : $this->amount->jsonSerialize() );
 
 		return $object_builder->jsonSerialize();
 	}

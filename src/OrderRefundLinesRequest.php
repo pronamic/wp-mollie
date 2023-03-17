@@ -1,6 +1,6 @@
 <?php
 /**
- * Refund Lines
+ * Order refund Lines request
  *
  * @author    Pronamic <info@pronamic.eu>
  * @copyright 2005-2023 Pronamic
@@ -13,13 +13,13 @@ namespace Pronamic\WordPress\Mollie;
 use JsonSerializable;
 
 /**
- * Refund Lines class
+ * Order refund Lines request class
  */
-class RefundLines implements JsonSerializable {
+class OrderRefundLinesRequest implements JsonSerializable {
 	/**
 	 * The lines.
 	 *
-	 * @var RefundLine[]
+	 * @var OrderRefundLineRequest[]
 	 */
 	private array $lines = [];
 
@@ -29,8 +29,8 @@ class RefundLines implements JsonSerializable {
 	 * @param string $id Order line identifier.
 	 * @return RefundLine
 	 */
-	public function new_line( string $id ): RefundLine {
-		$line = new RefundLine( $id );
+	public function new_line( string $id ): OrderRefundLineRequest {
+		$line = new OrderRefundLineRequest( $id );
 
 		$this->lines[] = $line;
 
@@ -50,7 +50,7 @@ class RefundLines implements JsonSerializable {
 			 * @param RefundLine $line Order refund line.
 			 * @return object
 			 */
-			function( RefundLine $line ) {
+			function( OrderRefundLineRequest $line ) {
 				return $line->jsonSerialize();
 			},
 			$this->lines
