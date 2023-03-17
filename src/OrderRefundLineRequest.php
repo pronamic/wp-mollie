@@ -63,18 +63,18 @@ class OrderRefundLineRequest implements JsonSerializable {
 	/**
 	 * Get quantity.
 	 *
-	 * @return int
+	 * @return int|null
 	 */
-	public function get_quantity(): int {
+	public function get_quantity(): ?int {
 		return $this->quantity;
 	}
 
 	/**
 	 * Set quantity.
 	 *
-	 * @param int $quantity Quantity to refund.
+	 * @param int|null $quantity Quantity to refund.
 	 */
-	public function set_quantity( int $quantity ): void {
+	public function set_quantity( ?int $quantity ): void {
 		$this->quantity = $quantity;
 	}
 
@@ -83,7 +83,7 @@ class OrderRefundLineRequest implements JsonSerializable {
 	 *
 	 * @return Amount|null
 	 */
-	public function get_amount(): Amount {
+	public function get_amount(): ?Amount {
 		return $this->amount;
 	}
 

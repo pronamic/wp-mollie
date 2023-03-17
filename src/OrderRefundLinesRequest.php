@@ -27,7 +27,7 @@ class OrderRefundLinesRequest implements JsonSerializable {
 	 * New line.
 	 *
 	 * @param string $id Order line identifier.
-	 * @return RefundLine
+	 * @return OrderRefundLineRequest
 	 */
 	public function new_line( string $id ): OrderRefundLineRequest {
 		$line = new OrderRefundLineRequest( $id );

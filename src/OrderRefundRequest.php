@@ -20,7 +20,7 @@ class OrderRefundRequest implements JsonSerializable {
 	 * An array of objects containing the order line details you want to create a refund for. If you
 	 * send an empty array, the entire order will be refunded.
 	 *
-	 * @var RefundLines
+	 * @var OrderRefundLinesRequest
 	 */
 	private OrderRefundLinesRequest $lines;
 
