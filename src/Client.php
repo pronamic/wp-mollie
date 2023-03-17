@@ -50,6 +50,10 @@ class Client {
 
 		$package_json = \file_get_contents( $package_file, true );
 
+		if ( false === $package_json ) {
+			return '';
+		}
+
 		$package_data = \json_decode( $package_json );
 
 		if ( ! is_object( $package_data ) ) {

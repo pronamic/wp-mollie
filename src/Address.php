@@ -146,7 +146,7 @@ class Address implements JsonSerializable {
 	/**
 	 * JSON serialize.
 	 *
-	 * @return mixed
+	 * @return object
 	 */
 	public function jsonSerialize(): object {
 		$object_builder = new ObjectBuilder();
