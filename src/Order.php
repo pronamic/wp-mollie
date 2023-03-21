@@ -22,11 +22,48 @@ class Order extends BaseResource {
 	private ?array $payments;
 
 	/**
+	 * Lines.
+	 *
+	 * @var Line[]
+	 */
+	private array $lines;
+
+	/**
 	 * Status.
 	 *
 	 * @var string
 	 */
 	private string $status;
+
+	/**
+	 * Construct order.
+	 *
+	 * @param string $id Order ID.
+	 */
+	public function __construct( $id ) {
+		parent::__construct( $id );
+
+		$this->lines = [];
+	}
+
+	/**
+	 * Get lines.
+	 *
+	 * @return Line[]
+	 */
+	public function get_lines(): array {
+		return $this->lines;
+	}
+
+	/**
+	 * Set lines.
+	 *
+	 * @param Line[] $lines Lines.
+	 * @return void
+	 */
+	public function set_lines( $lines ): void {
+		$this->lines = $lines;
+	}
 
 	/**
 	 * Get embedded payments.
@@ -79,6 +116,21 @@ class Order extends BaseResource {
 		$order = new Order( $object_access->get_property( 'id' ) );
 
 		$order->status = $object_access->get_property( 'status' );
+
+		$lines = array_map(
+			/**
+			 * Get JSON for lines.
+			 *
+			 * @param object $line Line.
+			 * @return Line
+			 */
+			function( object $line ) {
+				return Line::from_json( $line );
+			},
+			$json->lines
+		);
+
+		$order->set_lines( $lines );
 
 		if ( property_exists( $json, '_embedded' ) ) {
 			if ( property_exists( $json->_embedded, 'payments' ) ) {

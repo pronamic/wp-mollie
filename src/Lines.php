@@ -53,7 +53,7 @@ class Lines implements JsonSerializable {
 	/**
 	 * JSON serialize.
 	 *
-	 * @return array
+	 * @return object[]
 	 */
 	public function jsonSerialize(): array {
 		$objects = array_map(
