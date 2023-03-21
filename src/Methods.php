@@ -145,4 +145,12 @@ class Methods {
 	 * @var string
 	 */
 	const BELFIUS = 'belfius';
+
+	/**
+	 * Constant for the in3 method.
+	 *
+	 * @link https://www.mollie.com/payments/in3
+	 * @var string
+	 */
+	const IN3 = 'in3';
 }
