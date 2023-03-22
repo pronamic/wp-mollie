@@ -301,6 +301,16 @@ class Payment extends BaseResource {
 	}
 
 	/**
+	 * Has refunds.
+	 *
+	 * @link https://github.com/mollie/mollie-api-php/blob/v2.24.0/src/Resources/Payment.php#L348-L356
+	 * @return bool True if payment has refunds, false otherwise.
+	 */
+	public function has_refunds() {
+		return ! empty( $this->links->refunds );
+	}
+
+	/**
 	 * Get payment method specific details.
 	 *
 	 * @return PaymentDetails|null
