@@ -624,6 +624,35 @@ class Client {
 	}
 
 	/**
+	 * Get payment refunds.
+	 *
+	 * @param string               $payment_id Mollie payment ID.
+	 * @param array<string, mixed> $parameters Parameters.
+	 * @return array<Refund>
+	 */
+	public function get_payment_refunds( $payment_id, $parameters ) {
+		$object = $this->get(
+			$this->get_url(
+				'payments/*paymentId*/refunds',
+				[
+					'*paymentId*' => $payment_id,
+				],
+				$parameters
+			)
+		);
+
+		$refunds = [];
+
+		if ( \property_exists( $object, '_embedded' ) && \property_exists( $object->_embedded, 'refunds' ) ) {
+			foreach ( $object->_embedded->refunds as $refund_object ) {
+				$refunds[] = Refund::from_json( $refund_object );
+			}
+		}
+
+		return $refunds;
+	}
+
+	/**
 	 * Get organization.
 	 *
 	 * @param string $organization_id Mollie organization ID.
