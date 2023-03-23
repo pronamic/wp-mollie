@@ -57,7 +57,7 @@ class Line implements JsonSerializable {
 	 *
 	 * @var int
 	 */
-	private $quantity;
+	public $quantity;
 
 	/**
 	 * The price of a single item including VAT in the order line.
@@ -82,7 +82,7 @@ class Line implements JsonSerializable {
 	 *
 	 * @var Amount
 	 */
-	private $total_amount;
+	public $total_amount;
 
 	/**
 	 * The VAT rate applied to the order line, for example "21.00" for 21%. The `vatRate` should

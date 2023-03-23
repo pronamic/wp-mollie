@@ -59,7 +59,7 @@ class Refund extends BaseResource {
 	 *
 	 * @var null|Line[]
 	 */
-	private $lines;
+	public $lines;
 
 	/**
 	 * Construct chargeback.
