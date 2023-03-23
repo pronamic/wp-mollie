@@ -90,7 +90,7 @@ class Line implements JsonSerializable {
 	 *
 	 * @var Number
 	 */
-	private $vat_rate;
+	public Number $vat_rate;
 
 	/**
 	 * The amount of value-added tax on the line. The `totalAmount` field includes VAT, so
@@ -98,7 +98,7 @@ class Line implements JsonSerializable {
 	 *
 	 * @var Amount
 	 */
-	private $vat_amount;
+	public Amount $vat_amount;
 
 	/**
 	 * SKU.
