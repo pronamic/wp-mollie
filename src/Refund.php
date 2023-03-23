@@ -55,6 +55,13 @@ class Refund extends BaseResource {
 	private $created_at;
 
 	/**
+	 * Lines.
+	 *
+	 * @var null|Line[]
+	 */
+	private $lines;
+
+	/**
 	 * Construct chargeback.
 	 *
 	 * @param string            $id          Identifier.
@@ -148,6 +155,17 @@ class Refund extends BaseResource {
 			$object_access->get_property( 'paymentId' ),
 			new \DateTimeImmutable( $object_access->get_property( 'createdAt' ) )
 		);
+
+		if ( $object_access->has_property( 'lines' ) ) {
+			$object_lines = $object_access->get_property( 'lines' );
+
+			$refund->lines = \array_map(
+				function( $object_line ) {
+					return Line::from_json( $object_line );
+				},
+				$object_lines
+			);
+		}
 
 		return $refund;
 	}
