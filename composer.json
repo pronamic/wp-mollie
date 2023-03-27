@@ -2,6 +2,7 @@
     "name": "pronamic/wp-mollie",
     "description": "Mollie library for WordPress.",
     "license": "GPL-3.0-or-later",
+    "type": "wordpress-plugin",
     "authors": [
         {
             "name": "Pronamic",
