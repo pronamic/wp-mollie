@@ -25,6 +25,6 @@ class ClientTest extends TestCase {
 
 		$user_agent = $client->get_user_agent();
 
-		$this->assertStringMatchesFormat( 'PronamicMollie/1.0.0 uap/FyuVeDDqnKdzdry7 WordPress/%s', $user_agent );
+		$this->assertStringMatchesFormat( 'PronamicMollie/%s uap/FyuVeDDqnKdzdry7 WordPress/%s', $user_agent );
 	}
 }
