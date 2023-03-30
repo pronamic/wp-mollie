@@ -38,12 +38,14 @@
         "pronamic/wp-deployer": "^1.2"
     },
     "scripts": {
+        "coverage": "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-clover build/logs/clover.xml --coverage-text",
         "coveralls": "vendor/bin/php-coveralls -v",
         "post-install-cmd": "WorDBless\\Composer\\InstallDropin::copy",
         "post-update-cmd": "WorDBless\\Composer\\InstallDropin::copy",
         "phpcbf": "XDEBUG_MODE=off vendor/bin/phpcbf",
         "phpcs": "XDEBUG_MODE=off vendor/bin/phpcs -s -v",
         "phplint": "find src tests -name '*.php' | xargs -n 1 -P 4 php -l",
-        "phpstan": "vendor/bin/phpstan analyse --memory-limit=-1"
+        "phpstan": "vendor/bin/phpstan analyse --memory-limit=-1",
+        "phpunit": "XDEBUG_MODE=off vendor/bin/phpunit --colors=always"
     }
 }
