@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.1] - 2023-04-04
+
+### Fixed
+
+- Fixed PHP warning about missing `package.json` file.
+
+### Commits
+
+- Updated .gitattributes ([f03aba3](https://github.com/pronamic/wp-mollie/commit/f03aba3a6221be094d864fce9c6f9f8914dec2c0))
+
+Full set of changes: [`1.2.0...1.2.1`][1.2.1]
+
+[1.2.1]: https://github.com/pronamic/wp-mollie/compare/v1.2.0...v1.2.1
+
 ## [1.2.0] - 2023-03-29
 ### Changed
 
