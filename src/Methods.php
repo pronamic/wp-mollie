@@ -29,6 +29,13 @@ class Methods {
 	const BANCONTACT = 'bancontact';
 
 	/**
+	 * Constant for the Billie method.
+	 *
+	 * @var string
+	 */
+	const BILLIE = 'billie';
+
+	/**
 	 * Constant for the iDEAL method.
 	 *
 	 * @var string
