@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.2] - 2023-07-12
+
+### Commits
+
+- Switch to pronamic/pronamic-cli. ([eb47e96](https://github.com/pronamic/wp-mollie/commit/eb47e9636ec18d6809bbdc8f3e8ff427f521c07a))
+- Added constant for the Billie method. ([a2b6e58](https://github.com/pronamic/wp-mollie/commit/a2b6e5846b6aaf19db661959c58860e9b804ec1b))
+
+Full set of changes: [`1.2.1...1.2.2`][1.2.2]
+
+[1.2.2]: https://github.com/pronamic/wp-mollie/compare/v1.2.1...v1.2.2
+
 ## [1.2.1] - 2023-04-04
 
 ### Fixed

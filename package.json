@@ -1,6 +1,6 @@
 {
   "name": "@pronamic/wp-mollie",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Mollie library for WordPress.",
   "main": "index.js",
   "directories": {
