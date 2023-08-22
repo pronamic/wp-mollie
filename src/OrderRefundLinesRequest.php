@@ -50,7 +50,7 @@ class OrderRefundLinesRequest implements JsonSerializable {
 			 * @param RefundLine $line Order refund line.
 			 * @return object
 			 */
-			function( OrderRefundLineRequest $line ) {
+			function ( OrderRefundLineRequest $line ) {
 				return $line->jsonSerialize();
 			},
 			$this->lines

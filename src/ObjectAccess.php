@@ -19,15 +19,15 @@ class ObjectAccess {
 	 *
 	 * @var object Object.
 	 */
-	private $object;
+	private $value;
 
 	/**
 	 * Construct object access.
 	 *
-	 * @param object $object Object.
+	 * @param object $value Object.
 	 */
-	public function __construct( object $object ) {
-		$this->object = $object;
+	public function __construct( object $value ) {
+		$this->value = $value;
 	}
 
 	/**
@@ -37,7 +37,7 @@ class ObjectAccess {
 	 * @return bool True if the property exists, false if it doesn't exist.
 	 */
 	public function has_property( string $property ) {
-		return \property_exists( $this->object, $property );
+		return \property_exists( $this->value, $property );
 	}
 
 	/**
@@ -48,11 +48,16 @@ class ObjectAccess {
 	 * @throws \Exception Throws exception when property does not exists.
 	 */
 	public function get_property( string $property ) {
-		if ( ! \property_exists( $this->object, $property ) ) {
-			throw new \Exception( \sprintf( 'Object does not have `%s` property.', $property ) );
+		if ( ! \property_exists( $this->value, $property ) ) {
+			throw new \Exception(
+				\sprintf(
+					'Object does not have `%s` property.',
+					\esc_html( $property )
+				)
+			);
 		}
 
-		return $this->object->{$property};
+		return $this->value->{$property};
 	}
 
 	/**
@@ -62,10 +67,10 @@ class ObjectAccess {
 	 * @return mixed
 	 */
 	public function get_optional( $property ) {
-		if ( ! \property_exists( $this->object, $property ) ) {
+		if ( ! \property_exists( $this->value, $property ) ) {
 			return null;
 		}
 
-		return $this->object->{$property};
+		return $this->value->{$property};
 	}
 }

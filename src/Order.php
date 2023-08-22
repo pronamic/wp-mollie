@@ -124,7 +124,7 @@ class Order extends BaseResource {
 			 * @param object $line Line.
 			 * @return Line
 			 */
-			function( object $line ) {
+			function ( object $line ) {
 				return Line::from_json( $line );
 			},
 			$json->lines
@@ -141,7 +141,7 @@ class Order extends BaseResource {
 					 * @param object $payment Payment.
 					 * @return Payment
 					 */
-					function( object $payment ) {
+					function ( object $payment ) {
 						return Payment::from_json( $payment );
 					},
 					$json->_embedded->payments

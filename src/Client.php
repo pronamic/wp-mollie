@@ -134,7 +134,10 @@ class Client {
 			$code = $response->status();
 
 			throw new \Exception(
-				\sprintf( 'Could not JSON decode Mollie response to an object (HTTP Status Code: %s).', $code ),
+				\sprintf(
+					'Could not JSON decode Mollie response to an object (HTTP Status Code: %s).',
+					\esc_html( $code )
+				),
 				\intval( $code )
 			);
 		}
@@ -142,9 +145,9 @@ class Client {
 		// Mollie error from JSON response.
 		if ( isset( $data->status, $data->title, $data->detail ) ) {
 			throw new Error(
-				$data->status,
-				$data->title,
-				$data->detail
+				\esc_html( $data->status ),
+				\esc_html( $data->title ),
+				\esc_html( $data->detail )
 			);
 		}
 

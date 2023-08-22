@@ -215,11 +215,11 @@ class Line implements JsonSerializable {
 	/**
 	 * Create line from object.
 	 *
-	 * @param stdClass $object Object.
+	 * @param stdClass $value Object.
 	 * @return Line
 	 */
-	public static function from_object( stdClass $object ) {
-		$object_access = new ObjectAccess( $object );
+	public static function from_object( stdClass $value ) {
+		$object_access = new ObjectAccess( $value );
 
 		$line = new self(
 			$object_access->get_property( 'name' ),

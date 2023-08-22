@@ -175,13 +175,13 @@ class Customer implements JsonSerializable {
 	/**
 	 * Create customer from object.
 	 *
-	 * @param object $object Object.
+	 * @param object $value Object.
 	 * @return Customer
 	 */
-	public static function from_object( $object ) {
+	public static function from_object( $value ) {
 		$customer = new self();
 
-		$object_access = new ObjectAccess( $object );
+		$object_access = new ObjectAccess( $value );
 
 		$customer->set_id( $object_access->get_optional( 'id' ) );
 		$customer->set_mode( $object_access->get_optional( 'mode' ) );

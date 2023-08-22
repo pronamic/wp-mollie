@@ -160,7 +160,7 @@ class Refund extends BaseResource {
 			$object_lines = $object_access->get_property( 'lines' );
 
 			$refund->lines = \array_map(
-				function( $object_line ) {
+				function ( $object_line ) {
 					return Line::from_json( $object_line );
 				},
 				$object_lines

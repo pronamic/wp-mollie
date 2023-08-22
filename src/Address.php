@@ -125,11 +125,11 @@ class Address implements JsonSerializable {
 		 *
 		 * The permitted country codes are defined in ISO-3166-1 alpha-2 (e.g. 'NL').
 		 */
-		if ( 2 !== strlen( $country ) ) {
+		if ( 2 !== \strlen( $country ) ) {
 			throw new InvalidArgumentException(
-				sprintf(
+				\sprintf(
 					'Given country `%s` not ISO 3166-1 alpha-2 value.',
-					$country
+					\esc_html( $country )
 				)
 			);
 		}

@@ -67,11 +67,11 @@ class Amount implements JsonSerializable {
 	/**
 	 * Create amount from object.
 	 *
-	 * @param stdClass $object Object.
+	 * @param stdClass $value Object.
 	 * @return Amount
 	 */
-	public static function from_object( stdClass $object ) {
-		$object_access = new ObjectAccess( $object );
+	public static function from_object( stdClass $value ) {
+		$object_access = new ObjectAccess( $value );
 
 		return new self(
 			$object_access->get_property( 'currency' ),

@@ -121,13 +121,13 @@ class Profile {
 	/**
 	 * Create profile from object.
 	 *
-	 * @param object $object Object.
+	 * @param object $value Object.
 	 * @return Profile
 	 */
-	public static function from_object( $object ) {
+	public static function from_object( $value ) {
 		$profile = new self();
 
-		$object_access = new ObjectAccess( $object );
+		$object_access = new ObjectAccess( $value );
 
 		$profile->set_id( $object_access->get_optional( 'id' ) );
 		$profile->set_mode( $object_access->get_optional( 'mode' ) );
