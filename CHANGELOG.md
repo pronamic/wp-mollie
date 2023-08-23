@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.3] - 2023-08-23
+
+### Commits
+
+- Fixed some WPCS 3 warnings. ([c05be91](https://github.com/pronamic/wp-mollie/commit/c05be91d7d636c2877a648904b0c2437f11f8cfa))
+
+Full set of changes: [`1.2.2...1.2.3`][1.2.3]
+
+[1.2.3]: https://github.com/pronamic/wp-mollie/compare/v1.2.2...v1.2.3
+
 ## [1.2.2] - 2023-07-12
 
 ### Commits
