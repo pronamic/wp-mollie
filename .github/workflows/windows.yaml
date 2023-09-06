@@ -5,5 +5,4 @@ on: [ workflow_dispatch ]
 jobs:
   phpunit:
     runs-on: windows-latest
-    steps:
-    - uses: pronamic/actions/.github/workflows/phpunit.yml@main
+    uses: pronamic/actions/.github/workflows/phpunit.yml@main
