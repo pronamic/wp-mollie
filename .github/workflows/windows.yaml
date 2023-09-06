@@ -27,4 +27,4 @@ jobs:
         run: composer require --dev --no-update --no-progress roots/wordpress:"^${{ matrix.wp-versions }}" wp-phpunit/wp-phpunit:"^${{ matrix.wp-versions }}"
 
       - name: Run PHPUnit
-        run: composer run-script phpunit
+        run: vendor/bin/phpunit
