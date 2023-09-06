@@ -5,4 +5,26 @@ on: [ workflow_dispatch ]
 jobs:
   phpunit:
     runs-on: windows-latest
-    uses: pronamic/actions/.github/workflows/phpunit.yml@main
+    strategy:
+      matrix:
+        php-versions: ['8.1']
+        wp-versions: ['6.3']
+
+    name: PHP ${{ matrix.php-versions }} WordPress ${{ matrix.wp-versions }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
+
+      - name: Setup WordPress
+        run: composer require --dev --no-update --no-progress roots/wordpress:"^${{ matrix.wp-versions }}" wp-phpunit/wp-phpunit:"^${{ matrix.wp-versions }}"
+
+      - name: Run PHPUnit
+        run: composer run-script phpunit
