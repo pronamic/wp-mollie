@@ -1,0 +1,33 @@
+{
+	"_links": {
+		"documentation": {
+			"href": "https://docs.mollie.com/reference/v2/refunds-api/get-refund",
+			"type": "text/html"
+		},
+		"payment": {
+			"href": "https://api.mollie.com/v2/payments/tr_M55e2utmfN",
+			"type": "application/hal+json"
+		},
+		"self": {
+			"href": "https://api.mollie.com/v2/payments/tr_M55e2utmfN/refunds/re_WZZYGCSJmz",
+			"type": "application/hal+json"
+		}
+	},
+	"amount": {
+		"currency": "EUR",
+		"value": "10.00"
+	},
+	"createdAt": "2023-09-06T07:20:16+00:00",
+	"description": "Test",
+	"id": "re_WZZYGCSJmz",
+	"metadata": {
+		"pronamic_payment_id": 18
+	},
+	"paymentId": "tr_M55e2utmfN",
+	"resource": "refund",
+	"settlementAmount": {
+		"currency": "EUR",
+		"value": "-10.00"
+	},
+	"status": "refunded"
+}
