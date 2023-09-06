@@ -14,7 +14,7 @@
 			"type": "string"
 		},
 		"amount": {
-			"$ref": "amount.json"
+			"$ref": "https://github.com/wp-pay-gateways/mollie/blob/master/json-schemas/amount.json"
 		},
 		"description": {
 			"description": "The description of the refund that may be shown to your customer, depending on the payment method used.",
