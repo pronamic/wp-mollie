@@ -14,7 +14,7 @@
 			"type": "string"
 		},
 		"amount": {
-			"$ref": "file://./amount.json"
+			"$ref": "file:///amount.json"
 		},
 		"description": {
 			"description": "The description of the refund that may be shown to your customer, depending on the payment method used.",
