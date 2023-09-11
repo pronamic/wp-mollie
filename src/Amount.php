@@ -65,10 +65,10 @@ class Amount implements JsonSerializable {
 	/**
 	 * Create amount from object.
 	 *
-	 * @param stdClass $value Object.
+	 * @param object $value Object.
 	 * @return Amount
 	 */
-	public static function from_object( stdClass $value ) {
+	public static function from_object( object $value ) {
 		$object_access = new ObjectAccess( $value );
 
 		return new self(

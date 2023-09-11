@@ -116,7 +116,7 @@ class Order extends BaseResource {
 			function ( object $line ) {
 				return Line::from_json( $line );
 			},
-			$json->lines
+			$object_access->get_property( 'lines' )
 		);
 
 		$order->set_lines( $lines );

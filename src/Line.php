@@ -212,10 +212,10 @@ class Line implements JsonSerializable {
 	/**
 	 * Create line from object.
 	 *
-	 * @param stdClass $value Object.
+	 * @param object $value Object.
 	 * @return Line
 	 */
-	public static function from_object( stdClass $value ) {
+	public static function from_object( object $value ) {
 		$object_access = new ObjectAccess( $value );
 
 		$line = new self(
@@ -238,11 +238,11 @@ class Line implements JsonSerializable {
 	 *
 	 * @param object $json JSON object.
 	 * @return Line
-	 * @throws InvalidArgumentException Throws invalid argument exception when input JSON is not an object.
+	 * @throws \InvalidArgumentException Throws invalid argument exception when input JSON is not an object.
 	 */
 	public static function from_json( $json ) {
 		if ( ! is_object( $json ) ) {
-			throw new InvalidArgumentException( 'JSON value must be an object.' );
+			throw new \InvalidArgumentException( 'JSON value must be an object.' );
 		}
 
 		return self::from_object( $json );
