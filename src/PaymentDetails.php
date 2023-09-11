@@ -29,7 +29,9 @@ class PaymentDetails {
 
 		$details = new PaymentDetails();
 
-		foreach ( $json as $key => $value ) {
+		$data = (array) $json;
+
+		foreach ( $data as $key => $value ) {
 			$details->{$key} = $value;
 		}
 
