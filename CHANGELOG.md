@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2023-09-11
+
+### Commits
+
+- Removed `justinrainbow/json-schema` usage to fix https://github.com/pronamic/pronamic-pay-with-mollie-for-woocommerce/issues/6. ([b4d2e66](https://github.com/pronamic/wp-mollie/commit/b4d2e665cdabb136d91789b8cf67e62b37f59f69))
+
+### Composer
+
+- Removed `justinrainbow/json-schema` `^5.2`.
+- Changed `php` from `>=7.4` to `>=8.0`.
+
+Full set of changes: [`1.2.3...1.3.0`][1.3.0]
+
+[1.3.0]: https://github.com/pronamic/wp-mollie/compare/v1.2.3...v1.3.0
+
 ## [1.2.3] - 2023-08-23
 
 ### Commits
