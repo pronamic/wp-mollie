@@ -98,19 +98,8 @@ class Order extends BaseResource {
 	 * @link https://docs.mollie.com/reference/v2/orders-api/get-order
 	 * @param object $json JSON object.
 	 * @return Order
-	 * @throws \JsonSchema\Exception\ValidationException Throws JSON schema validation exception when JSON is invalid.
 	 */
 	public static function from_json( $json ) {
-		$validator = new \JsonSchema\Validator();
-
-		$validator->validate(
-			$json,
-			(object) [
-				'$ref' => 'file://' . realpath( __DIR__ . '/../json-schemas/order.json' ),
-			],
-			\JsonSchema\Constraints\Constraint::CHECK_MODE_EXCEPTIONS
-		);
-
 		$object_access = new ObjectAccess( $json );
 
 		$order = new Order( $object_access->get_property( 'id' ) );

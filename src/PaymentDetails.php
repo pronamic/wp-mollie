@@ -21,22 +21,11 @@ class PaymentDetails {
 	 * @param string      $method Payment method.
 	 * @param object|null $json   JSON object.
 	 * @return PaymentDetails|null
-	 * @throws \JsonSchema\Exception\ValidationException Throws JSON schema validation exception when JSON is invalid.
 	 */
 	public static function from_json( $method, $json ) {
 		if ( null === $json ) {
 			return null;
 		}
-
-		$validator = new \JsonSchema\Validator();
-
-		$validator->validate(
-			$json,
-			(object) [
-				'$ref' => 'file://' . realpath( __DIR__ . '/../json-schemas/payment-details.json' ),
-			],
-			\JsonSchema\Constraints\Constraint::CHECK_MODE_EXCEPTIONS
-		);
 
 		$details = new PaymentDetails();
 

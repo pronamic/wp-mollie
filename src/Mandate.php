@@ -19,19 +19,8 @@ class Mandate extends BaseResource {
 	 *
 	 * @param object $json JSON object.
 	 * @return self
-	 * @throws \JsonSchema\Exception\ValidationException Throws JSON schema validation exception when JSON is invalid.
 	 */
 	public static function from_json( $json ) {
-		$validator = new \JsonSchema\Validator();
-
-		$validator->validate(
-			$json,
-			(object) [
-				'$ref' => 'file://' . realpath( __DIR__ . '/../json-schemas/mandate.json' ),
-			],
-			\JsonSchema\Constraints\Constraint::CHECK_MODE_EXCEPTIONS
-		);
-
 		$object_access = new ObjectAccess( $json );
 
 		$mandate = new Mandate(

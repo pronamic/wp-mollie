@@ -10,9 +10,6 @@
 
 namespace Pronamic\WordPress\Mollie;
 
-use JsonSchema\Constraints\Constraint;
-use JsonSchema\Exception\InvalidArgumentException;
-use JsonSchema\Validator;
 use JsonSerializable;
 use Pronamic\WordPress\Number\Number;
 use stdClass;
@@ -247,16 +244,6 @@ class Line implements JsonSerializable {
 		if ( ! is_object( $json ) ) {
 			throw new InvalidArgumentException( 'JSON value must be an object.' );
 		}
-
-		$validator = new Validator();
-
-		$validator->validate(
-			$json,
-			(object) [
-				'$ref' => 'file://' . realpath( __DIR__ . '/../json-schemas/line.json' ),
-			],
-			Constraint::CHECK_MODE_EXCEPTIONS
-		);
 
 		return self::from_object( $json );
 	}

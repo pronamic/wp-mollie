@@ -68,19 +68,8 @@ class Chargeback extends BaseResource {
 	 * @link https://docs.mollie.com/reference/v2/chargebacks-api/get-chargeback
 	 * @param object $json JSON object.
 	 * @return Chargeback
-	 * @throws \JsonSchema\Exception\ValidationException Throws JSON schema validation exception when JSON is invalid.
 	 */
 	public static function from_json( $json ) {
-		$validator = new \JsonSchema\Validator();
-
-		$validator->validate(
-			$json,
-			(object) [
-				'$ref' => 'file://' . realpath( __DIR__ . '/../json-schemas/chargeback.json' ),
-			],
-			\JsonSchema\Constraints\Constraint::CHECK_MODE_EXCEPTIONS
-		);
-
 		$object_access = new ObjectAccess( $json );
 
 		$chargeback = new Chargeback(

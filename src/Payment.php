@@ -421,19 +421,8 @@ class Payment extends BaseResource {
 	 * @link https://docs.mollie.com/reference/v2/payments-api/get-payment
 	 * @param object $json JSON object.
 	 * @return Payment
-	 * @throws \JsonSchema\Exception\ValidationException Throws JSON schema validation exception when JSON is invalid.
 	 */
 	public static function from_json( $json ) {
-		$validator = new \JsonSchema\Validator();
-
-		$validator->validate(
-			$json,
-			(object) [
-				'$ref' => 'file://' . realpath( __DIR__ . '/../json-schemas/payment.json' ),
-			],
-			\JsonSchema\Constraints\Constraint::CHECK_MODE_EXCEPTIONS
-		);
-
 		$object_access = new ObjectAccess( $json );
 
 		$payment = new Payment(

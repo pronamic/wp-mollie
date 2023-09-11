@@ -13,8 +13,6 @@ namespace Pronamic\WordPress\Mollie;
 use InvalidArgumentException;
 use JsonSerializable;
 use stdClass;
-use JsonSchema\Constraints\Constraint;
-use JsonSchema\Validator;
 use Pronamic\WordPress\Money\Money;
 
 /**
@@ -90,16 +88,6 @@ class Amount implements JsonSerializable {
 		if ( ! is_object( $json ) ) {
 			throw new InvalidArgumentException( 'JSON value must be an object.' );
 		}
-
-		$validator = new Validator();
-
-		$validator->validate(
-			$json,
-			(object) [
-				'$ref' => 'file://' . realpath( __DIR__ . '/../json-schemas/amount.json' ),
-			],
-			Constraint::CHECK_MODE_EXCEPTIONS
-		);
 
 		return self::from_object( $json );
 	}

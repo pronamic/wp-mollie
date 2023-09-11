@@ -10,9 +10,6 @@
 
 namespace Pronamic\WordPress\Mollie;
 
-use JsonSchema\Constraints\Constraint;
-use JsonSchema\Exception\InvalidArgumentException;
-use JsonSchema\Validator;
 use JsonSerializable;
 use stdClass;
 
