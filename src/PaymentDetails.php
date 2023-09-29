@@ -13,27 +13,20 @@ namespace Pronamic\WordPress\Mollie;
 /**
  * Payment details class
  */
-class PaymentDetails {
+class PaymentDetails extends ObjectAccess {
 	/**
-	 * Create payment detailsfrom JSON.
+	 * Create payment details from JSON.
 	 *
 	 * @link https://docs.mollie.com/reference/v2/payments-api/get-payment
-	 * @param string      $method Payment method.
 	 * @param object|null $json   JSON object.
 	 * @return PaymentDetails|null
 	 */
-	public static function from_json( $method, $json ) {
+	public static function from_json( $json ) {
 		if ( null === $json ) {
 			return null;
 		}
 
-		$details = new PaymentDetails();
-
-		$data = (array) $json;
-
-		foreach ( $data as $key => $value ) {
-			$details->{$key} = $value;
-		}
+		$details = new self( $json );
 
 		return $details;
 	}
