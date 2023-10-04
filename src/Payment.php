@@ -448,7 +448,7 @@ class Payment extends BaseResource {
 		$payment->set_mandate_id( $object_access->get_optional( 'mandateId' ) );
 
 		if ( $object_access->has_property( 'details' ) ) {
-			$payment->set_details( PaymentDetails::from_json( (string) $payment->get_method(), $object_access->get_property( 'details' ) ) );
+			$payment->set_details( PaymentDetails::from_json( $object_access->get_property( 'details' ) ) );
 		}
 
 		if ( $object_access->has_property( 'amountRefunded' ) ) {
