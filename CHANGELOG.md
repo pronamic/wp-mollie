@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.0] - 2023-10-13
+
+### Changed
+
+- The payment details (`$payment->get_details()`) object is now an instance of the `ObjectAccess` class. ([469c231](https://github.com/pronamic/wp-mollie/commit/469c231726bd6ff8ca4b9730e42db55248b24588))
+
+Full set of changes: [`1.3.0...1.4.0`][1.4.0]
+
+[1.4.0]: https://github.com/pronamic/wp-mollie/compare/v1.3.0...v1.4.0
+
 ## [1.3.0] - 2023-09-11
 
 ### Commits
