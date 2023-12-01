@@ -358,6 +358,9 @@ class PaymentRequest implements JsonSerializable {
 			$object_builder->set_optional( 'dueDate', $due_date->format( 'Y-m-d' ) );
 		}
 
+		// Credit card.
+		$object_builder->set_optional( 'cardToken', $this->card_token );
+
 		// IDeal.
 		$object_builder->set_optional( 'issuer', $this->issuer );
 
