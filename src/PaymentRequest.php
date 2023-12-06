@@ -173,6 +173,16 @@ class PaymentRequest implements JsonSerializable {
 	public $consumer_account;
 
 	/**
+	 * Card token for Credit Card.
+	 *
+	 * The card token from Mollie Components. The token contains the card information (such as
+	 * card holder, card number, and expiry date) needed to complete the payment.
+	 *
+	 * @var string|null
+	 */
+	public $card_token;
+
+	/**
 	 * Create Mollie payment request object.
 	 *
 	 * @param Amount $amount      The amount that you want to charge.
