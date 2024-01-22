@@ -100,6 +100,22 @@ class Client {
 	}
 
 	/**
+	 * Helper function to check if the HTTP timeout could be increased.
+	 * 
+	 * @link https://github.com/pronamic/wp-pay-core/issues/170
+	 * @return bool
+	 */
+	private function should_increase_http_timeout() {
+		return (
+			\wp_doing_cron()
+				||
+			\defined( 'WP_CLI' ) && WP_CLI
+				||
+			\defined( 'PRONAMIC_AS_CONTEXT' )
+		);
+	}
+
+	/**
 	 * Send request with the specified action and parameters
 	 *
 	 * @param string $url    URL.
@@ -117,6 +133,7 @@ class Client {
 			'headers'    => [
 				'Authorization' => 'Bearer ' . $this->api_key,
 			],
+			'timeout'    => $this->should_increase_http_timeout() ? 30 : 5,
 		];
 
 		if ( null !== $data ) {
