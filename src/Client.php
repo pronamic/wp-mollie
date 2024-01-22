@@ -111,7 +111,7 @@ class Client {
 				||
 			\defined( 'WP_CLI' ) && WP_CLI
 				||
-			\defined( 'PRONAMIC_AS_CONTEXT' )
+			\defined( 'PRONAMIC_ACTION_SCHEDULER_CONTEXT' )
 		);
 	}
 
