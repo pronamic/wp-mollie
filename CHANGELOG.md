@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.5.0] - 2024-02-07
+
+### Added
+
+- Added support for card token. [2941dee](https://github.com/pronamic/wp-mollie/commit/2941dee85b0c7ad2f510c9c1a34ceca1faa91585)
+
+### Changed
+
+- The HTTP timeout option is increased when connecting to Mollie via WP-Cron, WP-CLI or the Action Scheduler library. [pronamic/wp-pay-core#170](https://github.com/pronamic/wp-pay-core/issues/170)
+
+Full set of changes: [`1.4.0...1.5.0`][1.5.0]
+
+[1.5.0]: https://github.com/pronamic/wp-mollie/compare/v1.4.0...v1.5.0
+
 ## [1.4.0] - 2023-10-13
 
 ### Changed
