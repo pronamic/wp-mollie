@@ -1,13 +1,14 @@
 *.http text eol=crlf
 
-/documentation/    export-ignore
-/tests             export-ignore
+/.editorconfig     export-ignore
 /.gitattributes    export-ignore
 /.github/          export-ignore
 /.gitignore        export-ignore
+/documentation/    export-ignore
 /phpcs.xml.dist    export-ignore
 /phpstan.neon.dist export-ignore
 /phpunit.xml.dist  export-ignore
+/tests             export-ignore
 /tests/            export-ignore
 /vendor-bin/       export-ignore
 
