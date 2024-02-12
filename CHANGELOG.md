@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.5.1] - 2024-02-12
+
+### Added
+
+- Added constant for the TWINT method. ([331a5a3](https://github.com/pronamic/wp-mollie/commit/331a5a30f2a0bef7ae6d6333ef404e7b42f4ada7))
+
+Full set of changes: [`1.5.0...1.5.1`][1.5.1]
+
+[1.5.1]: https://github.com/pronamic/wp-mollie/compare/v1.5.0...v1.5.1
+
 ## [1.5.0] - 2024-02-07
 
 ### Added
