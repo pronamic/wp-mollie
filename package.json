@@ -2,17 +2,12 @@
 	"name": "@pronamic/wp-mollie",
 	"version": "1.5.0",
 	"description": "Mollie library for WordPress.",
-	"main": "index.js",
-	"directories": {
-		"test": "tests"
+	"author": {
+		"name": "Pronamic",
+		"email": "info@pronamic.eu",
+		"url": "https://www.pronamic.eu/"
 	},
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/pronamic/wp-mollie.git"
-	},
+	"license": "GPL-2.0-or-later",
 	"keywords": [
 		"mollie",
 		"php",
@@ -21,14 +16,18 @@
 		"wordpress",
 		"wp"
 	],
-	"author": {
-		"name": "Pronamic",
-		"email": "info@pronamic.eu",
-		"url": "https://www.pronamic.eu/"
+	"homepage": "https://github.com/pronamic/wp-mollie#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/pronamic/wp-mollie.git"
 	},
-	"license": "GPL-3.0-or-later",
 	"bugs": {
 		"url": "https://github.com/pronamic/wp-mollie/issues"
 	},
-	"homepage": "https://github.com/pronamic/wp-mollie#readme"
+	"devDependencies": {
+		"@wordpress/scripts": "^27.2.0"
+	},
+	"scripts": {
+		"lint:pkg-json": "wp-scripts lint-pkg-json"
+	}
 }
