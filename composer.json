@@ -33,10 +33,10 @@
 		"phpmd/phpmd": "^2.13",
 		"php-coveralls/php-coveralls": "^2.4",
 		"automattic/wordbless": "^0.4.0",
-		"pronamic/wp-coding-standards": "^2.0",
+		"pronamic/wp-coding-standards": "^2.1",
 		"yoast/phpunit-polyfills": "^1.0",
 		"roots/wordpress": "^6.0",
-		"pronamic/pronamic-cli": "^1.0"
+		"pronamic/pronamic-cli": "^1.1"
 	},
 	"scripts": {
 		"coverage": "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-clover build/logs/clover.xml --coverage-text",
