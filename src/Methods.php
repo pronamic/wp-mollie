@@ -160,4 +160,12 @@ class Methods {
 	 * @var string
 	 */
 	const IN3 = 'in3';
+
+	/**
+	 * Constant for the TWINT method.
+	 *
+	 * @link https://www.mollie.com/payments/twint
+	 * @var string
+	 */
+	const TWINT = 'twint';
 }
