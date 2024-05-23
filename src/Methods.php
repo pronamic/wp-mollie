@@ -36,6 +36,15 @@ class Methods {
 	const BILLIE = 'billie';
 
 	/**
+	 * Constant for the BLIK method, Poland's most popular payment method.
+	 *
+	 * @link https://github.com/mollie/mollie-api-php/blob/ed5b2ba1dc8f30a4674f10ca78ad547c2df91008/src/Types/PaymentMethod.php#L47-L50
+	 * @link https://www.mollie.com/en/payments/blik
+	 * @var string
+	 */
+	const BLIK = 'blik';
+
+	/**
 	 * Constant for the iDEAL method.
 	 *
 	 * @var string
