@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.6.0] - 2024-05-27
+
+### Commits
+
+- Updated composer.json ([c3890c6](https://github.com/pronamic/wp-mollie/commit/c3890c68640e2b53ad309cd8de18291db5c89f8d))
+- Updated package.json ([c5f77a8](https://github.com/pronamic/wp-mollie/commit/c5f77a8c3a06006e4749dd5247ca0b9dc85809f2))
+- Added MyBank. ([cb386f4](https://github.com/pronamic/wp-mollie/commit/cb386f43dc53c18557547a135ed576427f432f96))
+- Added BLIK. ([72aa13a](https://github.com/pronamic/wp-mollie/commit/72aa13a2ff98bcdd3c9a0c2722da297a46a5c263))
+
+### Composer
+
+- Changed `pronamic/wp-http` from `^1.1` to `v1.2.3`.
+	Release notes: https://github.com/pronamic/wp-http/releases/tag/v1.2.3
+- Changed `pronamic/wp-number` from `^1.1` to `v1.3.1`.
+	Release notes: https://github.com/pronamic/wp-number/releases/tag/v1.3.1
+- Changed `pronamic/wp-money` from `^2.0` to `v2.4.3`.
+	Release notes: https://github.com/pronamic/wp-money/releases/tag/v2.4.3
+
+Full set of changes: [`1.5.1...1.6.0`][1.6.0]
+
+[1.6.0]: https://github.com/pronamic/wp-mollie/compare/v1.5.1...v1.6.0
+
 ## [1.5.1] - 2024-02-12
 
 ### Added
