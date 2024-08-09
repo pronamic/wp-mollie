@@ -3,7 +3,7 @@
  * Mollie client.
  *
  * @author    Pronamic <info@pronamic.eu>
- * @copyright 2005-2023 Pronamic
+ * @copyright 2005-2024 Pronamic
  * @license   GPL-3.0-or-later
  * @package   Pronamic\WordPress\Mollie
  */
@@ -101,7 +101,7 @@ class Client {
 
 	/**
 	 * Helper function to check if the HTTP timeout could be increased.
-	 * 
+	 *
 	 * @link https://github.com/pronamic/wp-pay-core/issues/170
 	 * @return bool
 	 */
