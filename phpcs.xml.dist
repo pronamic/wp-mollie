@@ -6,4 +6,8 @@
 	<rule ref="PronamicWP">
 		<exclude name="WordPressVIPMinimum.Performance.FetchingRemoteData.FileGetContentsUnknown" />
 	</rule>
+
+	<rule ref="Generic.CodeAnalysis.RequireExplicitBooleanOperatorPrecedence.MissingParentheses">
+		<exclude-pattern>src/Client.php</exclude-pattern>
+	</rule>
 </ruleset>
