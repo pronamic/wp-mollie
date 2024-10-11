@@ -94,6 +94,13 @@ class Methods {
 	const GIROPAY = 'giropay';
 
 	/**
+	 * Constant for the Klarna.
+	 *
+	 * @var string
+	 */
+	const KLARNA = 'klarna';
+
+	/**
 	 * Constant for the Klarna - Pay Later method.
 	 *
 	 * @var string
