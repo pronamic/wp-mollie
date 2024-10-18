@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.7.0] - 2024-10-18
+
+### Commits
+
+- Updated composer.json ([6be686d](https://github.com/pronamic/wp-mollie/commit/6be686d6f57ffa935074be142b5266cbdf80fe07))
+- Added Klarna method for https://github.com/pronamic/wp-pronamic-pay-mollie/issues/57. ([41ec79e](https://github.com/pronamic/wp-mollie/commit/41ec79e3f41a6335046e0f5b9804d00c0d37df1c))
+- Fixed code quality issues. ([08741af](https://github.com/pronamic/wp-mollie/commit/08741af64e5dfbba22146074c7dd3985dce09b95))
+- Happy 2024. ([3d6c943](https://github.com/pronamic/wp-mollie/commit/3d6c943aeb759442b743449e9ae9473622f34feb))
+
+### Composer
+
+- Changed `php` from `>=8.0` to `>=8.1`.
+
+Full set of changes: [`1.6.0...1.7.0`][1.7.0]
+
+[1.7.0]: https://github.com/pronamic/wp-mollie/compare/v1.6.0...v1.7.0
+
 ## [1.6.0] - 2024-05-27
 
 ### Commits
