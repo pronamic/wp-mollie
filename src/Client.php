@@ -399,40 +399,6 @@ class Client {
 	}
 
 	/**
-	 * Get issuers
-	 *
-	 * @return array<string>
-	 */
-	public function get_issuers() {
-		$response = $this->get(
-			$this->get_url(
-				'methods/ideal',
-				[],
-				[
-					'include' => 'issuers',
-				]
-			)
-		);
-
-		$issuers = [];
-
-		if ( isset( $response->issuers ) ) {
-			foreach ( $response->issuers as $issuer ) {
-				$id   = $issuer->id;
-				$name = $issuer->name;
-
-				if ( null === $id || null === $name ) {
-					continue;
-				}
-
-				$issuers[ $id ] = $name;
-			}
-		}
-
-		return $issuers;
-	}
-
-	/**
 	 * Get all payment methods.
 	 *
 	 * @link https://docs.mollie.com/reference/v2/methods-api/list-all-methods
