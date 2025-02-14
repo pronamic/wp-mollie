@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.8.0] - 2025-02-14
+
+### Commits
+
+- Removed iDEAL issuers code. ([851d756](https://github.com/pronamic/wp-mollie/commit/851d7561bc0f4e321ec47855fa897df394621ed4))
+
+Full set of changes: [`1.7.0...1.8.0`][1.8.0]
+
+[1.8.0]: https://github.com/pronamic/wp-mollie/compare/v1.7.0...v1.8.0
+
 ## [1.7.0] - 2024-10-18
 
 ### Commits
