@@ -132,6 +132,14 @@ class Methods {
 	const MYBANK = 'mybank';
 
 	/**
+	 * Constant for the Pay by Bank method.
+	 *
+	 * @link https://docs.mollie.com/docs/pay-by-bank
+	 * @var string
+	 */
+	const PAY_BY_BANK = 'paybybank';
+
+	/**
 	 * Constant for the PayPal method.
 	 *
 	 * @var string
