@@ -29,6 +29,15 @@ class Methods {
 	const BANCONTACT = 'bancontact';
 
 	/**
+	 * Constant for the Belfius method.
+	 *
+	 * @link https://www.mollie.com/en/belfiusdirectnet
+	 * @since 1.1.10
+	 * @var string
+	 */
+	const BELFIUS = 'belfius';
+
+	/**
 	 * Constant for the Billie method.
 	 *
 	 * @var string
@@ -45,39 +54,11 @@ class Methods {
 	const BLIK = 'blik';
 
 	/**
-	 * Constant for the iDEAL method.
-	 *
-	 * @var string
-	 */
-	const IDEAL = 'ideal';
-
-	/**
 	 * Constant for the Credit Card method.
 	 *
 	 * @var string
 	 */
 	const CREDITCARD = 'creditcard';
-
-	/**
-	 * Constant for the Direct Debit method.
-	 *
-	 * @var string
-	 */
-	const DIRECT_DEBIT = 'directdebit';
-
-	/**
-	 * Constant for the Sofort method.
-	 *
-	 * @var string
-	 */
-	const SOFORT = 'sofort';
-
-	/**
-	 * Constant for the Bank transfer method.
-	 *
-	 * @var string
-	 */
-	const BANKTRANSFER = 'banktransfer';
 
 	/**
 	 * Constant for the EPS method.
@@ -92,6 +73,30 @@ class Methods {
 	 * @var string
 	 */
 	const GIROPAY = 'giropay';
+
+	/**
+	 * Constant for the iDEAL method.
+	 *
+	 * @var string
+	 */
+	const IDEAL = 'ideal';
+
+	/**
+	 * Constant for the in3 method.
+	 *
+	 * @link https://www.mollie.com/payments/in3
+	 * @var string
+	 */
+	const IN3 = 'in3';
+
+	/**
+	 * Constant for the KBC/CBC Payment Button method.
+	 *
+	 * @link https://www.mollie.com/en/kbccbc
+	 * @since 1.1.10
+	 * @var string
+	 */
+	const KBC = 'kbc';
 
 	/**
 	 * Constant for the Klarna.
@@ -170,30 +175,25 @@ class Methods {
 	const PRZELEWY24 = 'przelewy24';
 
 	/**
-	 * Constant for the KBC/CBC Payment Button method.
+	 * Constant for the SEPA Bank transfer method.
 	 *
-	 * @link https://www.mollie.com/en/kbccbc
-	 * @since 1.1.10
 	 * @var string
 	 */
-	const KBC = 'kbc';
+	const BANKTRANSFER = 'banktransfer';
 
 	/**
-	 * Constant for the Belfius Direct Net method.
+	 * Constant for the SEPA Direct Debit method.
 	 *
-	 * @link https://www.mollie.com/en/belfiusdirectnet
-	 * @since 1.1.10
 	 * @var string
 	 */
-	const BELFIUS = 'belfius';
+	const DIRECT_DEBIT = 'directdebit';
 
 	/**
-	 * Constant for the in3 method.
+	 * Constant for the Sofort method.
 	 *
-	 * @link https://www.mollie.com/payments/in3
 	 * @var string
 	 */
-	const IN3 = 'in3';
+	const SOFORT = 'sofort';
 
 	/**
 	 * Constant for the TWINT method.
