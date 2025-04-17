@@ -15,11 +15,25 @@ namespace Pronamic\WordPress\Mollie;
  */
 class Methods {
 	/**
+	 * Constant for the Alma method, a popular buy now, pay later service in France.
+	 *
+	 * @var string
+	 */
+	const ALMA = 'alma';
+
+	/**
 	 * Constant for the Apple Pay method.
 	 *
 	 * @var string
 	 */
 	const APPLE_PAY = 'applepay';
+
+	/**
+	 * Constant for the BANCOMAT Pay method.
+	 *
+	 * @var string
+	 */
+	const BANCOMAT_PAY = 'bancomatpay';
 
 	/**
 	 * Constant for the Bancontact method.
@@ -66,6 +80,13 @@ class Methods {
 	 * @var string
 	 */
 	const EPS = 'eps';
+
+	/**
+	 * Constant for the gift cards method.
+	 *
+	 * @var string
+	 */
+	const GIFT_CARD = 'giftcard';
 
 	/**
 	 * Constant for the Giropay method.
@@ -128,6 +149,20 @@ class Methods {
 	const KLARNA_SLICE_IT = 'klarnasliceit';
 
 	/**
+	 * Constant for the MB Way method, a popular mobile wallet in Portugal that allows users to pay via mobile devices.
+	 *
+	 * @var string
+	 */
+	const MB_WAY = 'mbway';
+
+	/**
+	 * Constant for the Multibanco method.
+	 *
+	 * @var string
+	 */
+	const MULTIBANCO = 'multibanco';
+
+	/**
 	 * MyBank.
 	 *
 	 * @link https://github.com/mollie/mollie-api-php/blob/ed5b2ba1dc8f30a4674f10ca78ad547c2df91008/src/Types/PaymentMethod.php#L114-L117
@@ -146,6 +181,13 @@ class Methods {
 	const PAY_BY_BANK = 'paybybank';
 
 	/**
+	 * Constant for the Payconiq method.
+	 *
+	 * @var string
+	 */
+	const PAYCONIQ = 'payconiq';
+
+	/**
 	 * Constant for the PayPal method.
 	 *
 	 * @var string
@@ -158,6 +200,13 @@ class Methods {
 	 * @var string
 	 */
 	const PAYSAFECARD = 'paysafecard';
+
+	/**
+	 * Constant for the Point of sale method.
+	 *
+	 * @var string
+	 */
+	const POINT_OF_SALE = 'pointofsale';
 
 	/**
 	 * Constant for the Gift cards method.
@@ -177,6 +226,20 @@ class Methods {
 	const PRZELEWY24 = 'przelewy24';
 
 	/**
+	 * Constant for the Riverty method.
+	 *
+	 * @var string
+	 */
+	const RIVERTY = 'riverty';
+
+	/**
+	 * Constant for the Satispay method.
+	 *
+	 * @var string
+	 */
+	const SATISPAY = 'satispay';
+
+	/**
 	 * Constant for the SEPA Bank transfer method.
 	 *
 	 * @var string
@@ -191,6 +254,13 @@ class Methods {
 	const DIRECT_DEBIT = 'directdebit';
 
 	/**
+	 * Constant for the Swish method.
+	 *
+	 * @var string
+	 */
+	const SWISH = 'swish';
+
+	/**
 	 * Constant for the Sofort method.
 	 *
 	 * @deprecated 1.9.0
@@ -199,10 +269,25 @@ class Methods {
 	const SOFORT = 'sofort';
 
 	/**
+	 * Constant for the Trustly method.
+	 *
+	 * @var string
+	 */
+	const TRUSTLY = 'trustly';
+
+	/**
 	 * Constant for the TWINT method.
 	 *
 	 * @link https://www.mollie.com/payments/twint
 	 * @var string
 	 */
 	const TWINT = 'twint';
+
+	/**
+	 * Constant for the Vouchers method.
+	 *
+	 * @link https://www.mollie.com/payments/meal-eco-gift-vouchers
+	 * @var string
+	 */
+	const VOUCHERS = 'voucher';
 }
