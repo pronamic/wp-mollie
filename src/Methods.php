@@ -70,6 +70,7 @@ class Methods {
 	/**
 	 * Constant for the Giropay method.
 	 *
+	 * @deprecated 1.9.0
 	 * @var string
 	 */
 	const GIROPAY = 'giropay';
@@ -163,6 +164,7 @@ class Methods {
 	 *
 	 * @link https://www.mollie.com/en/giftcards
 	 * @since 1.1.10
+	 * @deprecated 1.9.0
 	 * @var string
 	 */
 	const PODIUMCADEAUKAART = 'podiumcadeaukaart';
@@ -191,6 +193,7 @@ class Methods {
 	/**
 	 * Constant for the Sofort method.
 	 *
+	 * @deprecated 1.9.0
 	 * @var string
 	 */
 	const SOFORT = 'sofort';
