@@ -112,6 +112,26 @@ class PaymentRequest implements JsonSerializable {
 	private $billing_email;
 
 	/**
+	 * The customer's billing address details. Should include `email` or a valid
+	 * postal address consisting of `streetAndNumber`, `postalCode`, `city` and `country`.
+	 *
+	 * Required for payment method `in3`, `klarna`, `billie` and `riverty`.
+	 *
+	 * @link https://docs.mollie.com/reference/create-payment
+	 * @var Address|null
+	 */
+	private ?Address $billing_address = null;
+
+	/**
+	 * The customer's shipping address details. Should include `email` or a valid
+	 * postal address consisting of `streetAndNumber`, `postalCode`, `city` and `country`.
+	 *
+	 * @link https://docs.mollie.com/reference/create-payment
+	 * @var Address|null
+	 */
+	private ?Address $shipping_address = null;
+
+	/**
 	 * The date the payment should expire, in YYYY-MM-DD format. Please note: the minimum date
 	 * is tomorrow and the maximum date is 100 days after tomorrow.
 	 *
@@ -253,6 +273,24 @@ class PaymentRequest implements JsonSerializable {
 	}
 
 	/**
+	 * Set billing address.
+	 *
+	 * @param Address|null $billing_address Billing address.
+	 */
+	public function set_billing_address( ?Address $billing_address ): void {
+		$this->billing_address = $billing_address;
+	}
+
+	/**
+	 * Set shipping address.
+	 *
+	 * @param Address|null $shipping_address Shipping address.
+	 */
+	public function set_shipping_address( ?Address $shipping_address ): void {
+		$this->shipping_address = $shipping_address;
+	}
+
+	/**
 	 * Get sequence type.
 	 *
 	 * @return string|null
@@ -360,6 +398,8 @@ class PaymentRequest implements JsonSerializable {
 
 		// Payment method-specific parameters.
 		$object_builder->set_optional( 'billingEmail', $this->billing_email );
+
+		$object_builder->set_optional( 'billingAddress', null === $this->billing_address ? null : $this->billing_address->jsonSerialize() );
 
 		// Due date.
 		$due_date = $this->get_due_date();
