@@ -32,28 +32,28 @@ class Address implements JsonSerializable {
 	 *
 	 * @var string|null
 	 */
-	private ?string $title = null;
+	public ?string $title = null;
 
 	/**
 	 * The given name (first name) of the person.
 	 *
-	 * @var string
+	 * @var string|null
 	 */
-	private string $given_name;
+	public ?string $given_name = null;
 
 	/**
 	 * Organization name.
 	 *
-	 * @var string
+	 * @var string|null
 	 */
-	private string $family_name;
+	public ?string $family_name = null;
 
 	/**
 	 * The email address of the person.
 	 *
-	 * @var string
+	 * @var string|null
 	 */
-	private string $email;
+	public ?string $email = null;
 
 	/**
 	 * The phone number of the person. Some payment methods require this information. If
@@ -68,9 +68,9 @@ class Address implements JsonSerializable {
 	/**
 	 * Street and number.
 	 *
-	 * @var string
+	 * @var string|null
 	 */
-	private string $street_and_number;
+	public ?string $street_and_number = null;
 
 	/**
 	 * Additional street details.
@@ -89,9 +89,9 @@ class Address implements JsonSerializable {
 	/**
 	 * City.
 	 *
-	 * @var string
+	 * @var string|null
 	 */
-	private string $city;
+	public ?string $city = null;
 
 	/**
 	 * Region.
@@ -104,9 +104,9 @@ class Address implements JsonSerializable {
 	 * The country of the address in ISO 3166-1 alpha-2 format.
 	 *
 	 * @link https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
-	 * @var string
+	 * @var string|null
 	 */
-	private string $country;
+	public ?string $country;
 
 	/**
 	 * Construct address.
@@ -119,13 +119,13 @@ class Address implements JsonSerializable {
 	 * @param string $country           Country.
 	 * @throws InvalidArgumentException Throws exception on invalid arguments.
 	 */
-	public function __construct( string $given_name, string $family_name, string $email, string $street_and_number, string $city, string $country ) {
+	public function __construct( ?string $given_name, ?string $family_name, ?string $email, ?string $street_and_number, ?string $city, ?string $country ) {
 		/*
 		 * The two-character country code of the address.
 		 *
 		 * The permitted country codes are defined in ISO-3166-1 alpha-2 (e.g. 'NL').
 		 */
-		if ( 2 !== \strlen( $country ) ) {
+		if ( null !== $country && 2 !== \strlen( $country ) ) {
 			throw new InvalidArgumentException(
 				\sprintf(
 					'Given country `%s` not ISO 3166-1 alpha-2 value.',
@@ -153,16 +153,26 @@ class Address implements JsonSerializable {
 
 		$object_builder->set_optional( 'organizationName', $this->organization_name );
 		$object_builder->set_optional( 'title', $this->title );
-		$object_builder->set_required( 'givenName', $this->given_name );
-		$object_builder->set_required( 'familyName', $this->family_name );
-		$object_builder->set_required( 'email', $this->email );
+		$object_builder->set_optional( 'givenName', $this->given_name );
+		$object_builder->set_optional( 'familyName', $this->family_name );
+		$object_builder->set_optional( 'email', $this->email );
 		$object_builder->set_optional( 'phone', $this->phone );
-		$object_builder->set_required( 'streetAndNumber', $this->street_and_number );
+		$object_builder->set_optional( 'streetAndNumber', $this->street_and_number );
 		$object_builder->set_optional( 'streetAdditional', $this->street_additional );
 		$object_builder->set_optional( 'postalCode', $this->postal_code );
-		$object_builder->set_required( 'city', $this->city );
+		$object_builder->set_optional( 'city', $this->city );
 		$object_builder->set_optional( 'region', $this->region );
-		$object_builder->set_required( 'country', $this->country );
+		$object_builder->set_optional( 'country', $this->country );
+
+		/*
+		 * Should include `email` or a valid postal address consisting
+		 * of `streetAndNumber`, `postalCode`, `city` and `country`.
+		 *
+		 * @link https://docs.mollie.com/reference/create-payment
+		 */
+		if ( \in_array( null, [ $this->street_and_number, $this->postal_code, $this->city, $this->country ], true ) ) {
+			$object_builder->set_required( 'email', $this->email );
+		}
 
 		return $object_builder->jsonSerialize();
 	}
