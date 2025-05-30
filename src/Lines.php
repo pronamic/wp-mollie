@@ -35,7 +35,7 @@ class Lines implements JsonSerializable {
 	 * @param Number $vat_rate     VAT rate.
 	 * @param Amount $vat_amount   Value-added tax amount.
 	 */
-	public function new_line( string $name, int $quantity, Amount $unit_price, Amount $total_amount, Number $vat_rate, Amount $vat_amount ): Line {
+	public function new_line( string $name, int $quantity, Amount $unit_price, Amount $total_amount, ?Number $vat_rate, Amount $vat_amount ): Line {
 		$line = new Line(
 			$name,
 			$quantity,

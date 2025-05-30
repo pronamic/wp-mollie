@@ -85,9 +85,9 @@ class Line implements JsonSerializable {
 	 * The VAT rate applied to the order line, for example "21.00" for 21%. The `vatRate` should
 	 * be passed as a string and not as a float to ensure the correct number of decimals are passed.
 	 *
-	 * @var Number
+	 * @var Number|null
 	 */
-	public Number $vat_rate;
+	public ?Number $vat_rate;
 
 	/**
 	 * The amount of value-added tax on the line. The `totalAmount` field includes VAT, so
@@ -128,7 +128,7 @@ class Line implements JsonSerializable {
 	 * @param Number $vat_rate     VAT rate.
 	 * @param Amount $vat_amount   Value-added tax amount.
 	 */
-	public function __construct( string $name, int $quantity, Amount $unit_price, Amount $total_amount, Number $vat_rate, Amount $vat_amount ) {
+	public function __construct( string $name, int $quantity, Amount $unit_price, Amount $total_amount, ?Number $vat_rate, Amount $vat_amount ) {
 		$this->name         = $name;
 		$this->quantity     = $quantity;
 		$this->unit_price   = $unit_price;

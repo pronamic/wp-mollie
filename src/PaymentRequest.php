@@ -58,6 +58,18 @@ class PaymentRequest implements JsonSerializable {
 	public $webhook_url;
 
 	/**
+	 * Optionally provide the order lines for the payment. Each line contains
+	 * details such as a description of the item ordered and its price. All lines
+	 * must have the same currency as the payment.
+	 *
+	 * Required for payment methods `billie`, `in3`, `klarna`, `riverty` and `voucher`.
+	 *
+	 * @link https://docs.mollie.com/reference/create-payment
+	 * @var Lines|null
+	 */
+	private ?Lines $lines = null;
+
+	/**
 	 * Normally, a payment method selection screen is shown. However, when using this parameter,
 	 * your customer will skip the selection screen and will be sent directly to the chosen payment
 	 * method. The parameter enables you to fully integrate the payment method selection into your
@@ -291,6 +303,15 @@ class PaymentRequest implements JsonSerializable {
 	}
 
 	/**
+	 * Set lines.
+	 *
+	 * @param Lines|null $lines Lines.
+	 */
+	public function set_lines( ?Lines $lines ): void {
+		$this->lines = $lines;
+	}
+
+	/**
 	 * Get sequence type.
 	 *
 	 * @return string|null
@@ -387,6 +408,7 @@ class PaymentRequest implements JsonSerializable {
 		$object_builder->set_optional( 'redirectUrl', $this->redirect_url );
 
 		$object_builder->set_optional( 'webhookUrl', $this->webhook_url );
+		$object_builder->set_optional( 'lines', $this->lines?->jsonSerialize() );
 		$object_builder->set_optional( 'locale', $this->locale );
 		$object_builder->set_optional( 'method', $this->method );
 		$object_builder->set_optional( 'metadata', $this->metadata );
