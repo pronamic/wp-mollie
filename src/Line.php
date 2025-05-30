@@ -264,8 +264,8 @@ class Line implements JsonSerializable {
 		$object_builder->set_required( 'unitPrice', $this->unit_price->jsonSerialize() );
 		$object_builder->set_optional( 'discountAmount', null === $this->discount_amount ? null : $this->discount_amount->jsonSerialize() );
 		$object_builder->set_optional( 'totalAmount', $this->total_amount->jsonSerialize() );
-		$object_builder->set_required( 'vatRate', $this->vat_rate->format( 2, '.', '' ) );
-		$object_builder->set_required( 'vatAmount', $this->vat_amount->jsonSerialize() );
+		$object_builder->set_optional( 'vatRate', $this->vat_rate?->format( 2, '.', '' ) );
+		$object_builder->set_optional( 'vatAmount', $this->vat_amount->is_zero() ? null : $this->vat_amount->jsonSerialize() );
 		$object_builder->set_optional( 'sku', $this->sku );
 		$object_builder->set_optional( 'imageUrl', $this->image_url );
 		$object_builder->set_optional( 'productUrl', $this->product_url );
