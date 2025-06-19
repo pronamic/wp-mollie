@@ -25,7 +25,7 @@
 		"url": "https://github.com/pronamic/wp-mollie/issues"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^27.9.0"
+		"@wordpress/scripts": "^30.18.0"
 	},
 	"scripts": {
 		"lint:pkg-json": "wp-scripts lint-pkg-json"
