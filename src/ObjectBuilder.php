@@ -30,7 +30,7 @@ class ObjectBuilder implements JsonSerializable {
 	 * @param mixed  $value Value.
 	 * @return void
 	 */
-	public function set_optional( string $key, $value ) {
+	public function set_optional( string $key, mixed $value ) {
 		if ( null === $value ) {
 			return;
 		}
@@ -45,7 +45,7 @@ class ObjectBuilder implements JsonSerializable {
 	 * @param mixed  $value Value.
 	 * @return void
 	 */
-	public function set_required( string $key, $value ) {
+	public function set_required( string $key, mixed $value ) {
 		$this->set_value( $key, $value );
 	}
 
@@ -56,7 +56,7 @@ class ObjectBuilder implements JsonSerializable {
 	 * @param mixed  $value Value.
 	 * @return void
 	 */
-	private function set_value( string $key, $value ) {
+	private function set_value( string $key, mixed $value ) {
 		$this->data[ $key ] = $value;
 	}
 

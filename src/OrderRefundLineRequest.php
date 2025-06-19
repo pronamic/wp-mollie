@@ -29,7 +29,7 @@ class OrderRefundLineRequest implements JsonSerializable {
 	 *
 	 * @var int|null
 	 */
-	private ?int $quantity;
+	private ?int $quantity = null;
 
 	/**
 	 * The amount that you want to refund. In almost all cases, Mollie can determine the amount automatically. The
@@ -37,7 +37,7 @@ class OrderRefundLineRequest implements JsonSerializable {
 	 *
 	 * @var Amount|null
 	 */
-	private ?Amount $amount;
+	private ?Amount $amount = null;
 
 	/**
 	 * Order refund line request constructor.

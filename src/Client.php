@@ -125,7 +125,7 @@ class Client {
 	 * @throws Error Throws Error when Mollie error occurs.
 	 * @throws \Exception Throws exception when error occurs.
 	 */
-	public function send_request( $url, $method = 'GET', $data = null ) {
+	public function send_request( $url, $method = 'GET', mixed $data = null ) {
 		// Request.
 		$args = [
 			'method'     => $method,
@@ -179,7 +179,7 @@ class Client {
 	 * @return object
 	 * @throws Error Throws Error when Mollie error occurs.
 	 */
-	private function post( string $url, $data = null ) {
+	private function post( string $url, mixed $data = null ) {
 		return $this->send_request( $url, 'POST', $data );
 	}
 

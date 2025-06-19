@@ -223,7 +223,7 @@ class OrderRequest implements JsonSerializable {
 	 * @param mixed $metadata Metadata.
 	 * @return void
 	 */
-	public function set_metadata( $metadata = null ): void {
+	public function set_metadata( mixed $metadata = null ): void {
 		$this->metadata = $metadata;
 	}
 
