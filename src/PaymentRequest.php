@@ -274,17 +274,6 @@ class PaymentRequest implements JsonSerializable {
 	}
 
 	/**
-	 * Set billing email.
-	 *
-	 * @link https://docs.mollie.com/reference/v2/payments-api/create-payment
-	 * @param string|null $email Billing email.
-	 * @return void
-	 */
-	public function set_billing_email( $email = null ) {
-		$this->billing_email = $email;
-	}
-
-	/**
 	 * Set billing address.
 	 *
 	 * @param Address|null $billing_address Billing address.
