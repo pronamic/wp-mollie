@@ -11,8 +11,6 @@
 namespace Pronamic\WordPress\Mollie;
 
 use JsonSerializable;
-use Pronamic\WordPress\Money\TaxedMoney;
-use Pronamic\WordPress\Number\Number;
 
 /**
  * Lines class
@@ -32,17 +30,13 @@ class Lines implements JsonSerializable {
 	 * @param int    $quantity     Quantity.
 	 * @param Amount $unit_price   Unit price.
 	 * @param Amount $total_amount Total amount, including VAT and  discounts.
-	 * @param Number $vat_rate     VAT rate.
-	 * @param Amount $vat_amount   Value-added tax amount.
 	 */
-	public function new_line( string $name, int $quantity, Amount $unit_price, Amount $total_amount, ?Number $vat_rate, Amount $vat_amount ): Line {
+	public function new_line( string $name, int $quantity, Amount $unit_price, Amount $total_amount ): Line {
 		$line = new Line(
 			$name,
 			$quantity,
 			$unit_price,
-			$total_amount,
-			$vat_rate,
-			$vat_amount
+			$total_amount
 		);
 
 		$this->lines[] = $line;

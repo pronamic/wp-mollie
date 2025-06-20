@@ -12,7 +12,6 @@ namespace Pronamic\WordPress\Mollie;
 
 use JsonSerializable;
 use Pronamic\WordPress\Number\Number;
-use stdClass;
 
 /**
  * Line class
@@ -23,7 +22,7 @@ class Line implements JsonSerializable {
 	 *
 	 * @var string|null
 	 */
-	private $id;
+	private ?string $id = null;
 
 	/**
 	 * The type of product bought, for example, a physical or a digital product.
@@ -31,37 +30,29 @@ class Line implements JsonSerializable {
 	 * @see LineType
 	 * @var string|null
 	 */
-	private $type;
+	public ?string $type = null;
+
 
 	/**
-	 * The category of product bought.
-	 *
-	 * Optional, but required in at least one of the lines to accept `voucher` payments.
-	 *
-	 * @var string|null
-	 */
-	private $category;
-
-	/**
-	 * Name.
+	 * Description.
 	 *
 	 * @var string
 	 */
-	private $name;
+	private string $description;
 
 	/**
 	 * Quantity.
 	 *
 	 * @var int
 	 */
-	public $quantity;
+	private int $quantity;
 
 	/**
 	 * The price of a single item including VAT in the order line.
 	 *
 	 * @var Amount
 	 */
-	private $unit_price;
+	private Amount $unit_price;
 
 	/**
 	 * Any discounts applied to the order line. For example, if you have a two-for-one sale,
@@ -69,7 +60,7 @@ class Line implements JsonSerializable {
 	 *
 	 * @var Amount|null
 	 */
-	private $discount_amount;
+	public ?Amount $discount_amount = null;
 
 	/**
 	 * The total amount of the line, including VAT and discounts. Adding all `totalAmount`
@@ -79,7 +70,7 @@ class Line implements JsonSerializable {
 	 *
 	 * @var Amount
 	 */
-	public $total_amount;
+	public Amount $total_amount;
 
 	/**
 	 * The VAT rate applied to the order line, for example "21.00" for 21%. The `vatRate` should
@@ -87,54 +78,50 @@ class Line implements JsonSerializable {
 	 *
 	 * @var Number|null
 	 */
-	public ?Number $vat_rate;
+	public ?Number $vat_rate = null;
 
 	/**
 	 * The amount of value-added tax on the line. The `totalAmount` field includes VAT, so
 	 * the `vatAmount` can be calculated with the formula `totalAmount × (vatRate / (100 + vatRate))`.
 	 *
-	 * @var Amount
+	 * @var Amount|null
 	 */
-	public Amount $vat_amount;
+	public ?Amount $vat_amount = null;
 
 	/**
 	 * SKU.
 	 *
 	 * @var string|null
 	 */
-	private $sku;
+	public ?string $sku = null;
 
 	/**
 	 * Image url.
 	 *
 	 * @var string|null
 	 */
-	private $image_url;
+	public ?string $image_url = null;
 
 	/**
 	 * Product URL.
 	 *
 	 * @var string|null
 	 */
-	private $product_url;
+	public ?string $product_url = null;
 
 	/**
 	 * Line constructor.
 	 *
-	 * @param string $name         Description of the order line.
+	 * @param string $description  Description of the order line.
 	 * @param int    $quantity     Quantity.
 	 * @param Amount $unit_price   Unit price.
 	 * @param Amount $total_amount Total amount, including VAT and  discounts.
-	 * @param Number $vat_rate     VAT rate.
-	 * @param Amount $vat_amount   Value-added tax amount.
 	 */
-	public function __construct( string $name, int $quantity, Amount $unit_price, Amount $total_amount, ?Number $vat_rate, Amount $vat_amount ) {
-		$this->name         = $name;
+	public function __construct( string $description, int $quantity, Amount $unit_price, Amount $total_amount ) {
+		$this->description  = $description;
 		$this->quantity     = $quantity;
 		$this->unit_price   = $unit_price;
 		$this->total_amount = $total_amount;
-		$this->vat_rate     = $vat_rate;
-		$this->vat_amount   = $vat_amount;
 	}
 
 	/**
@@ -147,69 +134,6 @@ class Line implements JsonSerializable {
 	}
 
 	/**
-	 * Set identifier.
-	 *
-	 * @param string|null $id Identifier.
-	 */
-	public function set_id( ?string $id ): void {
-		$this->id = $id;
-	}
-
-	/**
-	 * Set type.
-	 *
-	 * @param string|null $type Type.
-	 */
-	public function set_type( ?string $type ): void {
-		$this->type = $type;
-	}
-
-	/**
-	 * Set category.
-	 *
-	 * @param null|string $category Product category.
-	 */
-	public function set_category( ?string $category ): void {
-		$this->category = $category;
-	}
-
-	/**
-	 * Set discount amount, should not contain any tax.
-	 *
-	 * @param Amount|null $discount_amount Discount amount.
-	 */
-	public function set_discount_amount( ?Amount $discount_amount = null ): void {
-		$this->discount_amount = $discount_amount;
-	}
-
-	/**
-	 * Set the SKU of this payment line.
-	 *
-	 * @param string|null $sku SKU.
-	 */
-	public function set_sku( ?string $sku ): void {
-		$this->sku = $sku;
-	}
-
-	/**
-	 * Set image URL.
-	 *
-	 * @param string|null $image_url Image url.
-	 */
-	public function set_image_url( ?string $image_url ): void {
-		$this->image_url = $image_url;
-	}
-
-	/**
-	 * Set product URL.
-	 *
-	 * @param string|null $product_url Product URL.
-	 */
-	public function set_product_url( ?string $product_url = null ): void {
-		$this->product_url = $product_url;
-	}
-
-	/**
 	 * Create line from object.
 	 *
 	 * @param object $value Object.
@@ -219,22 +143,22 @@ class Line implements JsonSerializable {
 		$object_access = new ObjectAccess( $value );
 
 		$line = new self(
-			$object_access->get_property( 'name' ),
+			$object_access->get_property( 'description' ),
 			$object_access->get_property( 'quantity' ),
 			Amount::from_object( $object_access->get_property( 'unitPrice' ) ),
 			Amount::from_object( $object_access->get_property( 'totalAmount' ) ),
-			Number::from_string( $object_access->get_property( 'vatRate' ) ),
-			Amount::from_object( $object_access->get_property( 'vatAmount' ) )
 		);
 
-		$line->set_id( $object_access->get_property( 'id' ) );
-		$line->set_sku( $object_access->get_property( 'sku' ) );
+		$line->id         = $object_access->get_property( 'id' );
+		$line->sku        = $object_access->get_property( 'sku' );
+		$line->vat_rate   = Number::from_string( $object_access->get_property( 'vatRate' ) );
+		$line->vat_amount = Amount::from_object( $object_access->get_property( 'vatAmount' ) );
 
 		return $line;
 	}
 
 	/**
-	 * Create amount from JSON string.
+	 * Create line from JSON string.
 	 *
 	 * @param object $json JSON object.
 	 * @return Line
@@ -256,16 +180,16 @@ class Line implements JsonSerializable {
 	public function jsonSerialize(): object {
 		$object_builder = new ObjectBuilder();
 
-		$object_builder->set_optional( 'id', $this->id );
-		$object_builder->set_optional( 'type', $this->type );
-		$object_builder->set_optional( 'category', $this->category );
-		$object_builder->set_required( 'description', $this->name );
+		$object_builder->set_required( 'description', $this->description );
 		$object_builder->set_required( 'quantity', $this->quantity );
 		$object_builder->set_required( 'unitPrice', $this->unit_price->jsonSerialize() );
+		$object_builder->set_required( 'totalAmount', $this->total_amount->jsonSerialize() );
+
+		$object_builder->set_optional( 'id', $this->id );
+		$object_builder->set_optional( 'type', $this->type );
 		$object_builder->set_optional( 'discountAmount', null === $this->discount_amount ? null : $this->discount_amount->jsonSerialize() );
-		$object_builder->set_optional( 'totalAmount', $this->total_amount->jsonSerialize() );
-		$object_builder->set_optional( 'vatRate', $this->vat_rate?->format( 2, '.', '' ) );
-		$object_builder->set_optional( 'vatAmount', $this->vat_amount->is_zero() ? null : $this->vat_amount->jsonSerialize() );
+		$object_builder->set_optional( 'vatRate', null === $this->vat_rate || $this->vat_rate->is_zero() ? null : $this->vat_rate->format( 2, '.', '' ) );
+		$object_builder->set_optional( 'vatAmount', null === $this->vat_amount || $this->vat_amount->to_wp()->is_zero() ? null : $this->vat_amount->jsonSerialize() );
 		$object_builder->set_optional( 'sku', $this->sku );
 		$object_builder->set_optional( 'imageUrl', $this->image_url );
 		$object_builder->set_optional( 'productUrl', $this->product_url );
