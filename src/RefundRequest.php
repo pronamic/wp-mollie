@@ -93,7 +93,7 @@ class RefundRequest implements JsonSerializable {
 	 * @param mixed $metadata Metadata.
 	 * @return void
 	 */
-	public function set_metadata( $metadata = null ) {
+	public function set_metadata( mixed $metadata = null ) {
 		$this->metadata = $metadata;
 	}
 

@@ -414,7 +414,6 @@ class Payment extends BaseResource {
 		return $this->metadata;
 	}
 
-
 	/**
 	 * Create payment from JSON.
 	 *

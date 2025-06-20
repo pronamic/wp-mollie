@@ -57,9 +57,7 @@ class Lines implements JsonSerializable {
 			 * @param Line $line Payment line.
 			 * @return object
 			 */
-			function ( Line $line ) {
-				return $line->jsonSerialize();
-			},
+			fn( Line $line ) => $line->jsonSerialize(),
 			$this->lines
 		);
 

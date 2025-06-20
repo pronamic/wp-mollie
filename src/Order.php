@@ -19,7 +19,7 @@ class Order extends BaseResource {
 	 *
 	 * @var Payment[]|null
 	 */
-	private ?array $payments;
+	private ?array $payments = null;
 
 	/**
 	 * Lines.
@@ -113,9 +113,7 @@ class Order extends BaseResource {
 			 * @param object $line Line.
 			 * @return Line
 			 */
-			function ( object $line ) {
-				return Line::from_json( $line );
-			},
+			fn( object $line ) => Line::from_json( $line ),
 			$object_access->get_property( 'lines' )
 		);
 
@@ -130,9 +128,7 @@ class Order extends BaseResource {
 					 * @param object $payment Payment.
 					 * @return Payment
 					 */
-					function ( object $payment ) {
-						return Payment::from_json( $payment );
-					},
+					fn( object $payment ) => Payment::from_json( $payment ),
 					$json->_embedded->payments
 				);
 

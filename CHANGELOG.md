@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.9.0] - 2025-06-19
+
+### Added
+
+- Added 'Pay by Bank' constant. ([7aeabc6](https://github.com/pronamic/wp-mollie/commit/7aeabc6c314c02ed83056284bd6dbc651c3be048))
+
+Full set of changes: [`1.8.0...1.9.0`][1.9.0]
+
+[1.9.0]: https://github.com/pronamic/wp-mollie/compare/v1.8.0...v1.9.0
+
 ## [1.8.0] - 2025-02-14
 
 ### Commits
