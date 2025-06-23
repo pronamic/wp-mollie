@@ -197,6 +197,17 @@ class PaymentRequest implements JsonSerializable {
 	public $mandate_id;
 
 	/**
+	 * Card token for Credit Card.
+	 *
+	 * The card token from Mollie Components. The token contains the card information (such as
+	 * card holder, card number, and expiry date) needed to complete the payment.
+	 *
+	 * @var string|null
+	 */
+	#[RemoteApiProperty( 'cardToken' )]
+	public ?string $card_token = null;
+
+	/**
 	 * Consumer name for SEPA Direct Debit.
 	 *
 	 * Beneficiary name of the account holder. Only available if one-off payments are enabled
@@ -215,16 +226,6 @@ class PaymentRequest implements JsonSerializable {
 	 * @var string|null
 	 */
 	public $consumer_account;
-
-	/**
-	 * Card token for Credit Card.
-	 *
-	 * The card token from Mollie Components. The token contains the card information (such as
-	 * card holder, card number, and expiry date) needed to complete the payment.
-	 *
-	 * @var string|null
-	 */
-	public $card_token;
 
 	/**
 	 * Create Mollie payment request object.
