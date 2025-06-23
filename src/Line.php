@@ -74,7 +74,7 @@ class Line implements JsonSerializable {
 	 * @var Amount|null
 	 */
 	#[RemoteApiProperty( 'discountAmount' )]
-	private ?Amount $discount_amount = null;
+	public ?Amount $discount_amount = null;
 
 	/**
 	 * The total amount of the line, including VAT and discounts. Adding all `totalAmount`
