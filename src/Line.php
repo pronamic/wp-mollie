@@ -170,11 +170,19 @@ class Line implements JsonSerializable {
 
 		$line->sku = $object_access->get_property( 'sku' );
 
+		if ( $object_access->has_property( 'vatRate' ) ) {
+			$line->vat_rate   = Number::from_string( $object_access->get_property( 'vatRate' ) );
+		}
+
+		if ( $object_access->has_property( 'vatAmount' ) ) {
+			$line->vat_amount = Amount::from_object( $object_access->get_property( 'vatAmount' ) );
+		}
+
 		return $line;
 	}
 
 	/**
-	 * Create amount from JSON string.
+	 * Create line from JSON string.
 	 *
 	 * @param object $json JSON object.
 	 * @return Line
@@ -201,11 +209,11 @@ class Line implements JsonSerializable {
 		$object_builder->set_required( 'description', $this->description );
 		$object_builder->set_required( 'quantity', $this->quantity );
 		$object_builder->set_required( 'unitPrice', $this->unit_price->jsonSerialize() );
+		$object_builder->set_required( 'totalAmount', $this->total_amount->jsonSerialize() );
 
 		$object_builder->set_optional( 'discountAmount', null === $this->discount_amount ? null : $this->discount_amount->jsonSerialize() );
-		$object_builder->set_optional( 'totalAmount', $this->total_amount->jsonSerialize() );
-		$object_builder->set_optional( 'vatRate', $this->vat_rate->format( 2, '.', '' ) );
-		$object_builder->set_optional( 'vatAmount', $this->vat_amount->jsonSerialize() );
+		$object_builder->set_optional( 'vatRate', null === $this->vat_rate ? null: $this->vat_rate->format( 2, '.', '' ) );
+		$object_builder->set_optional( 'vatAmount', null === $this->vat_amount ? null : $this->vat_amount->jsonSerialize() );
 		$object_builder->set_optional( 'sku', $this->sku );
 		$object_builder->set_optional( 'imageUrl', $this->image_url );
 		$object_builder->set_optional( 'productUrl', $this->product_url );

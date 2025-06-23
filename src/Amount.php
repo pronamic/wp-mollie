@@ -12,7 +12,6 @@ namespace Pronamic\WordPress\Mollie;
 
 use InvalidArgumentException;
 use JsonSerializable;
-use stdClass;
 use Pronamic\WordPress\Money\Money;
 
 /**
@@ -24,14 +23,16 @@ class Amount implements JsonSerializable {
 	 *
 	 * @var string
 	 */
-	private $currency;
+	#[RemoteApiProperty( 'currency' )]
+	public string $currency;
 
 	/**
 	 * Amount value.
 	 *
 	 * @var string
 	 */
-	private $value;
+	#[RemoteApiProperty( 'value' )]
+	public string $value;
 
 	/**
 	 * Construct an amount.
@@ -42,24 +43,6 @@ class Amount implements JsonSerializable {
 	public function __construct( $currency, $value ) {
 		$this->currency = $currency;
 		$this->value    = $value;
-	}
-
-	/**
-	 * Get currency.
-	 *
-	 * @return string
-	 */
-	public function get_currency() {
-		return $this->currency;
-	}
-
-	/**
-	 * Get amount.
-	 *
-	 * @return string
-	 */
-	public function get_value() {
-		return $this->value;
 	}
 
 	/**

@@ -10,7 +10,6 @@
 
 namespace Pronamic\WordPress\Mollie;
 
-use InvalidArgumentException;
 use JsonSerializable;
 
 /**

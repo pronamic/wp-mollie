@@ -32,8 +32,8 @@ class AmountTest extends TestCase {
 
 		$this->assertInstanceOf( __NAMESPACE__ . '\Amount', $amount );
 
-		$this->assertEquals( 'EUR', $amount->get_currency() );
-		$this->assertEquals( '100.00', $amount->get_value() );
+		$this->assertEquals( 'EUR', $amount->currency );
+		$this->assertEquals( '100.00', $amount->value );
 	}
 
 	/**

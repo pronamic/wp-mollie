@@ -37,8 +37,8 @@ class AmountTransformerTest extends TestCase {
 
 		$mollie_amount = $amount_transformer->transform_wp_to_mollie( $pronamic_money );
 
-		$this->assertEquals( $expected_currency, $mollie_amount->get_currency() );
-		$this->assertEquals( $expected_value, $mollie_amount->get_value() );
+		$this->assertEquals( $expected_currency, $mollie_amount->currency );
+		$this->assertEquals( $expected_value, $mollie_amount->value );
 	}
 
 	/**
