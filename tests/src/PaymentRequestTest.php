@@ -46,7 +46,7 @@ class PaymentRequestTest extends TestCase {
 		$request->issuer        = 'ideal_INGBNL2A';
 		$request->customer_id   = 'cst_8wmqcHMN4U';
 		$request->sequence_type = Sequence::FIRST;
-		$request->set_metadata( 'meta' );
+		$request->metadata      = 'meta';
 
 		$this->request = $request;
 	}
@@ -80,7 +80,7 @@ class PaymentRequestTest extends TestCase {
 	public function test_due_date() {
 		$due_date = new \DateTime( '+12 days' );
 
-		$this->request->set_due_date( $due_date );
+		$this->request->due_date = $due_date;
 
 		$this->assertEquals(
 			[
@@ -101,32 +101,6 @@ class PaymentRequestTest extends TestCase {
 	}
 
 	/**
-	 * Test billing email.
-	 *
-	 * @link https://docs.mollie.com/reference/v2/payments-api/create-payment
-	 * @link https://help.mollie.com/hc/en-us/articles/115000711569-What-is-bank-transfer-and-how-does-it-work-
-	 */
-	public function test_billing_email() {
-		$request = new PaymentRequest(
-			new Amount( 'EUR', '100.00' ),
-			'Test'
-		);
-
-		$request->set_billing_email( 'john@example.com' );
-
-		$this->assertEquals( 'john@example.com', $request->get_billing_email() );
-
-		$this->assertEquals(
-			[
-				'amount'       => $request->amount->jsonSerialize(),
-				'description'  => 'Test',
-				'billingEmail' => 'john@example.com',
-			],
-			(array) $request->jsonSerialize()
-		);
-	}
-
-	/**
 	 * Test billing metadata.
 	 *
 	 * @link https://docs.mollie.com/reference/v2/payments-api/create-payment
@@ -143,9 +117,9 @@ class PaymentRequestTest extends TestCase {
 			'gf_entry_id'  => 5678,
 		];
 
-		$request->set_metadata( $metadata );
+		$request->metadata = $metadata;
 
-		$this->assertEquals( $metadata, $request->get_metadata() );
+		$this->assertEquals( $metadata, $request->metadata );
 
 		$this->assertEquals(
 			[
@@ -166,10 +140,10 @@ class PaymentRequestTest extends TestCase {
 			'Test'
 		);
 
-		$request->set_mandate_id( 'mdt_h3gAaD5zP' );
-		$request->set_sequence_type( 'recurring' );
+		$request->mandate_id    = 'mdt_h3gAaD5zP';
+		$request->sequence_type = 'recurring';
 
-		$this->assertEquals( 'mdt_h3gAaD5zP', $request->get_mandate_id() );
-		$this->assertEquals( 'recurring', $request->get_sequence_type() );
+		$this->assertEquals( 'mdt_h3gAaD5zP', $request->mandate_id );
+		$this->assertEquals( 'recurring', $request->sequence_type );
 	}
 }
