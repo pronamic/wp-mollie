@@ -30,14 +30,10 @@ class Lines implements JsonSerializable {
 	 * @param int    $quantity     Quantity.
 	 * @param Amount $unit_price   Unit price.
 	 * @param Amount $total_amount Total amount, including VAT and  discounts.
+	 * @return Line
 	 */
 	public function new_line( string $description, int $quantity, Amount $unit_price, Amount $total_amount ): Line {
-		$line = new Line(
-			$description,
-			$quantity,
-			$unit_price,
-			$total_amount
-		);
+		$line = new Line( $description, $quantity, $unit_price, $total_amount );
 
 		$this->lines[] = $line;
 

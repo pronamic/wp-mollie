@@ -171,7 +171,7 @@ class Line implements JsonSerializable {
 		$line->sku = $object_access->get_property( 'sku' );
 
 		if ( $object_access->has_property( 'vatRate' ) ) {
-			$line->vat_rate   = Number::from_string( $object_access->get_property( 'vatRate' ) );
+			$line->vat_rate = Number::from_string( $object_access->get_property( 'vatRate' ) );
 		}
 
 		if ( $object_access->has_property( 'vatAmount' ) ) {
@@ -212,7 +212,7 @@ class Line implements JsonSerializable {
 		$object_builder->set_required( 'totalAmount', $this->total_amount->jsonSerialize() );
 
 		$object_builder->set_optional( 'discountAmount', null === $this->discount_amount ? null : $this->discount_amount->jsonSerialize() );
-		$object_builder->set_optional( 'vatRate', null === $this->vat_rate ? null: $this->vat_rate->format( 2, '.', '' ) );
+		$object_builder->set_optional( 'vatRate', null === $this->vat_rate ? null : $this->vat_rate->format( 2, '.', '' ) );
 		$object_builder->set_optional( 'vatAmount', null === $this->vat_amount ? null : $this->vat_amount->jsonSerialize() );
 		$object_builder->set_optional( 'sku', $this->sku );
 		$object_builder->set_optional( 'imageUrl', $this->image_url );
