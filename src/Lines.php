@@ -3,7 +3,7 @@
  * Lines
  *
  * @author    Pronamic <info@pronamic.eu>
- * @copyright 2005-2024 Pronamic
+ * @copyright 2005-2025 Pronamic
  * @license   GPL-3.0-or-later
  * @package   Pronamic\WordPress\Mollie
  */
@@ -11,8 +11,6 @@
 namespace Pronamic\WordPress\Mollie;
 
 use JsonSerializable;
-use Pronamic\WordPress\Money\TaxedMoney;
-use Pronamic\WordPress\Number\Number;
 
 /**
  * Lines class
