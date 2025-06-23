@@ -20,11 +20,4 @@ class ResourceType {
 	 * @var string
 	 */
 	const PAYMENTS = 'payments';
-
-	/**
-	 * Constant for orders.
-	 *
-	 * @var string
-	 */
-	const ORDERS = 'orders';
 }
