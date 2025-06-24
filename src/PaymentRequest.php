@@ -16,7 +16,7 @@ use JsonSerializable;
 /**
  * Payment request class
  */
-class PaymentRequest implements JsonSerializable {
+class PaymentRequest implements JsonSerializable, RemoteSerializable {
 	/**
 	 * The description of the payment you're creating. This will be shown to the consumer on their
 	 * card or bank statement when possible.
@@ -215,6 +215,7 @@ class PaymentRequest implements JsonSerializable {
 	 *
 	 * @var string|null
 	 */
+	#[RemoteApiProperty( 'consumerName' )]
 	public $consumer_name;
 
 	/**
@@ -225,6 +226,7 @@ class PaymentRequest implements JsonSerializable {
 	 *
 	 * @var string|null
 	 */
+	#[RemoteApiProperty( 'consumerAccount' )]
 	public $consumer_account;
 
 	/**
@@ -239,53 +241,21 @@ class PaymentRequest implements JsonSerializable {
 	}
 
 	/**
+	 * Remote serialize.
+	 *
+	 * @return object
+	 */
+	public function remote_serialize(): object {
+		return ( new RemoteSerializer() )->serialize( $this );
+	}
+
+	/**
 	 * JSON serialize.
 	 *
 	 * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
 	 * @return object
 	 */
 	public function jsonSerialize(): object {
-		$object_builder = new ObjectBuilder();
-
-		// General.
-		$object_builder->set_required( 'amount', $this->amount->jsonSerialize() );
-		$object_builder->set_required( 'description', $this->description );
-
-		/**
-		 * The `redirectUrl` is documented as `required` but is not always required:
-		 *
-		 * > The parameter can be omitted for recurring payments (sequenceType: `recurring`)
-		 * > and for Apple Pay payments with an applePayPaymentToken.
-		 *
-		 * @link https://docs.mollie.com/reference/v2/payments-api/create-payment
-		 */
-		$object_builder->set_optional( 'redirectUrl', $this->redirect_url );
-
-		$object_builder->set_optional( 'webhookUrl', $this->webhook_url );
-		$object_builder->set_optional( 'locale', $this->locale );
-		$object_builder->set_optional( 'method', $this->method );
-		$object_builder->set_optional( 'metadata', $this->metadata );
-
-		// Parameters for recurring payments.
-		$object_builder->set_optional( 'sequenceType', $this->sequence_type );
-		$object_builder->set_optional( 'customerId', $this->customer_id );
-		$object_builder->set_optional( 'mandateId', $this->mandate_id );
-
-		// Due date.
-		if ( null !== $this->due_date ) {
-			$object_builder->set_optional( 'dueDate', $this->due_date->format( 'Y-m-d' ) );
-		}
-
-		// Credit card.
-		$object_builder->set_optional( 'cardToken', $this->card_token );
-
-		// IDeal.
-		$object_builder->set_optional( 'issuer', $this->issuer );
-
-		// SEPA Direct Debit.
-		$object_builder->set_optional( 'consumerName', $this->consumer_name );
-		$object_builder->set_optional( 'consumerAccount', $this->consumer_account );
-
-		return $object_builder->jsonSerialize();
+		return $this->remote_serialize();
 	}
 }

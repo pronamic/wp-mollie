@@ -103,7 +103,7 @@ class Line implements JsonSerializable {
 	 * @var Amount|null
 	 */
 	#[RemoteApiProperty( 'vatAmount' )]
-	public ?Amount $vat_amount;
+	public ?Amount $vat_amount = null;
 
 	/**
 	 * The SKU, EAN, ISBN or UPC of the product sold.

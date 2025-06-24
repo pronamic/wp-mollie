@@ -17,7 +17,7 @@ use Pronamic\WordPress\Money\Money;
 /**
  * Amount class
  */
-class Amount implements JsonSerializable {
+class Amount implements JsonSerializable, RemoteSerializable {
 	/**
 	 * Currency.
 	 *
@@ -73,6 +73,15 @@ class Amount implements JsonSerializable {
 		}
 
 		return self::from_object( $json );
+	}
+
+	/**
+	 * Remote serialize.
+	 *
+	 * @return object
+	 */
+	public function remote_serialize(): object {
+		return $this->jsonSerialize();
 	}
 
 	/**

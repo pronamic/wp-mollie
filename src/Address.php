@@ -18,7 +18,7 @@ use JsonSerializable;
  * @link https://docs.mollie.com/reference/v2/orders-api/create-order
  * @link https://docs.mollie.com/overview/common-data-types#address-object
  */
-class Address implements JsonSerializable {
+class Address implements JsonSerializable, RemoteSerializable {
 	/**
 	 * The title of the person, for example Mr. or Mrs.
 	 *
@@ -134,26 +134,21 @@ class Address implements JsonSerializable {
 	public ?string $country = null;
 
 	/**
-	 * JSON serialize.
+	 * Remote serialize.
 	 *
 	 * @return object
 	 */
+	public function remote_serialize(): object {
+		return ( new RemoteSerializer() )->serialize( $this );
+	}
+
+	/**
+	 * JSON serialize.
+	 *
+	 * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
+	 * @return object
+	 */
 	public function jsonSerialize(): object {
-		$object_builder = new ObjectBuilder();
-
-		$object_builder->set_optional( 'title', $this->title );
-		$object_builder->set_optional( 'givenName', $this->given_name );
-		$object_builder->set_optional( 'familyName', $this->family_name );
-		$object_builder->set_optional( 'organizationName', $this->organization_name );
-		$object_builder->set_optional( 'streetAndNumber', $this->street_and_number );
-		$object_builder->set_optional( 'streetAdditional', $this->street_additional );
-		$object_builder->set_optional( 'postalCode', $this->postal_code );
-		$object_builder->set_optional( 'email', $this->email );
-		$object_builder->set_optional( 'phone', $this->phone );
-		$object_builder->set_optional( 'city', $this->city );
-		$object_builder->set_optional( 'region', $this->region );
-		$object_builder->set_optional( 'country', $this->country );
-
-		return $object_builder->jsonSerialize();
+		return $this->remote_serialize();
 	}
 }
