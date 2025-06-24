@@ -65,7 +65,7 @@ final class RemoteSerializer {
 		}
 
 		if ( \is_array( $value ) ) {
-			return \array_map( $this->get_value( ... ),  $value );
+			return \array_map( $this->get_value( ... ), $value );
 		}
 
 		return $value;
