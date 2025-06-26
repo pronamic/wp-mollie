@@ -3,7 +3,7 @@
  * Amount
  *
  * @author    Pronamic <info@pronamic.eu>
- * @copyright 2005-2024 Pronamic
+ * @copyright 2005-2025 Pronamic
  * @license   GPL-3.0-or-later
  * @package   Pronamic\WordPress\Mollie
  */
@@ -12,26 +12,27 @@ namespace Pronamic\WordPress\Mollie;
 
 use InvalidArgumentException;
 use JsonSerializable;
-use stdClass;
 use Pronamic\WordPress\Money\Money;
 
 /**
  * Amount class
  */
-class Amount implements JsonSerializable {
+class Amount implements JsonSerializable, RemoteSerializable {
 	/**
 	 * Currency.
 	 *
 	 * @var string
 	 */
-	private $currency;
+	#[RemoteApiProperty( 'currency' )]
+	public string $currency;
 
 	/**
 	 * Amount value.
 	 *
 	 * @var string
 	 */
-	private $value;
+	#[RemoteApiProperty( 'value' )]
+	public string $value;
 
 	/**
 	 * Construct an amount.
@@ -42,24 +43,6 @@ class Amount implements JsonSerializable {
 	public function __construct( $currency, $value ) {
 		$this->currency = $currency;
 		$this->value    = $value;
-	}
-
-	/**
-	 * Get currency.
-	 *
-	 * @return string
-	 */
-	public function get_currency() {
-		return $this->currency;
-	}
-
-	/**
-	 * Get amount.
-	 *
-	 * @return string
-	 */
-	public function get_value() {
-		return $this->value;
 	}
 
 	/**
@@ -90,6 +73,15 @@ class Amount implements JsonSerializable {
 		}
 
 		return self::from_object( $json );
+	}
+
+	/**
+	 * Remote serialize.
+	 *
+	 * @return object
+	 */
+	public function remote_serialize(): object {
+		return $this->jsonSerialize();
 	}
 
 	/**

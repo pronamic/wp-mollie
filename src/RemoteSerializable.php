@@ -1,6 +1,6 @@
 <?php
 /**
- * Mollie resource.
+ * Remote serializable
  *
  * @author    Pronamic <info@pronamic.eu>
  * @copyright 2005-2025 Pronamic
@@ -11,13 +11,13 @@
 namespace Pronamic\WordPress\Mollie;
 
 /**
- * Resource type class
+ * Remote serializable class
  */
-class ResourceType {
+interface RemoteSerializable {
 	/**
-	 * Constant for payments.
+	 * Remote serialize.
 	 *
-	 * @var string
+	 * @return mixed
 	 */
-	const PAYMENTS = 'payments';
+	public function remote_serialize();
 }
