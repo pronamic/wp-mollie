@@ -3,7 +3,7 @@
  * Lines
  *
  * @author    Pronamic <info@pronamic.eu>
- * @copyright 2005-2024 Pronamic
+ * @copyright 2005-2025 Pronamic
  * @license   GPL-3.0-or-later
  * @package   Pronamic\WordPress\Mollie
  */
@@ -11,8 +11,6 @@
 namespace Pronamic\WordPress\Mollie;
 
 use JsonSerializable;
-use Pronamic\WordPress\Money\TaxedMoney;
-use Pronamic\WordPress\Number\Number;
 
 /**
  * Lines class
@@ -28,22 +26,14 @@ class Lines implements JsonSerializable {
 	/**
 	 * New line.
 	 *
-	 * @param string $name         Description of the order line.
+	 * @param string $description  A description of the line item.
 	 * @param int    $quantity     Quantity.
 	 * @param Amount $unit_price   Unit price.
 	 * @param Amount $total_amount Total amount, including VAT and  discounts.
-	 * @param Number $vat_rate     VAT rate.
-	 * @param Amount $vat_amount   Value-added tax amount.
+	 * @return Line
 	 */
-	public function new_line( string $name, int $quantity, Amount $unit_price, Amount $total_amount, Number $vat_rate, Amount $vat_amount ): Line {
-		$line = new Line(
-			$name,
-			$quantity,
-			$unit_price,
-			$total_amount,
-			$vat_rate,
-			$vat_amount
-		);
+	public function new_line( string $description, int $quantity, Amount $unit_price, Amount $total_amount ): Line {
+		$line = new Line( $description, $quantity, $unit_price, $total_amount );
 
 		$this->lines[] = $line;
 

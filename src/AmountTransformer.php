@@ -3,7 +3,7 @@
  * Amount transformer.
  *
  * @author    Pronamic <info@pronamic.eu>
- * @copyright 2005-2024 Pronamic
+ * @copyright 2005-2025 Pronamic
  * @license   GPL-3.0-or-later
  * @package   Pronamic\WordPress\Mollie
  */
@@ -44,6 +44,6 @@ class AmountTransformer {
 	 * @return Money
 	 */
 	public function transform_mollie_to_wp( Amount $amount ) {
-		return new Money( $amount->get_value(), $amount->get_currency() );
+		return new Money( $amount->value, $amount->currency );
 	}
 }

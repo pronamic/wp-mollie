@@ -3,7 +3,7 @@
  * Mollie amount transformer test.
  *
  * @author    Pronamic <info@pronamic.eu>
- * @copyright 2005-2024 Pronamic
+ * @copyright 2005-2025 Pronamic
  * @license   GPL-3.0-or-later
  * @package   Pronamic\WordPress\Pay
  */
@@ -16,7 +16,7 @@ use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 /**
  * Title: Mollie amount transformer tests
  * Description:
- * Copyright: 2005-2024 Pronamic
+ * Copyright: 2005-2025 Pronamic
  * Company: Pronamic
  *
  * @author  Reüel van der Steege
@@ -37,8 +37,8 @@ class AmountTransformerTest extends TestCase {
 
 		$mollie_amount = $amount_transformer->transform_wp_to_mollie( $pronamic_money );
 
-		$this->assertEquals( $expected_currency, $mollie_amount->get_currency() );
-		$this->assertEquals( $expected_value, $mollie_amount->get_value() );
+		$this->assertEquals( $expected_currency, $mollie_amount->currency );
+		$this->assertEquals( $expected_value, $mollie_amount->value );
 	}
 
 	/**

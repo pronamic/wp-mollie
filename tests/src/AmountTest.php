@@ -3,7 +3,7 @@
  * Mollie amount test.
  *
  * @author    Pronamic <info@pronamic.eu>
- * @copyright 2005-2024 Pronamic
+ * @copyright 2005-2025 Pronamic
  * @license   GPL-3.0-or-later
  * @package   Pronamic\WordPress\Pay
  */
@@ -16,7 +16,7 @@ use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 /**
  * Title: Mollie amount tests
  * Description:
- * Copyright: 2005-2024 Pronamic
+ * Copyright: 2005-2025 Pronamic
  * Company: Pronamic
  *
  * @author  Reüel van der Steege
@@ -32,8 +32,8 @@ class AmountTest extends TestCase {
 
 		$this->assertInstanceOf( __NAMESPACE__ . '\Amount', $amount );
 
-		$this->assertEquals( 'EUR', $amount->get_currency() );
-		$this->assertEquals( '100.00', $amount->get_value() );
+		$this->assertEquals( 'EUR', $amount->currency );
+		$this->assertEquals( '100.00', $amount->value );
 	}
 
 	/**

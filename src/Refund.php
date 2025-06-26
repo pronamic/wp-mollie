@@ -3,7 +3,7 @@
  * Refund
  *
  * @author    Pronamic <info@pronamic.eu>
- * @copyright 2005-2024 Pronamic
+ * @copyright 2005-2025 Pronamic
  * @license   GPL-3.0-or-later
  * @package   Pronamic\WordPress\Mollie
  */
@@ -53,13 +53,6 @@ class Refund extends BaseResource {
 	 * @var DateTimeInterface
 	 */
 	private $created_at;
-
-	/**
-	 * Lines.
-	 *
-	 * @var null|Line[]
-	 */
-	public $lines;
 
 	/**
 	 * Construct chargeback.
@@ -144,15 +137,6 @@ class Refund extends BaseResource {
 			$object_access->get_property( 'paymentId' ),
 			new \DateTimeImmutable( $object_access->get_property( 'createdAt' ) )
 		);
-
-		if ( $object_access->has_property( 'lines' ) ) {
-			$object_lines = $object_access->get_property( 'lines' );
-
-			$refund->lines = \array_map(
-				fn( $object_line ) => Line::from_json( $object_line ),
-				$object_lines
-			);
-		}
 
 		return $refund;
 	}

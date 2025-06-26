@@ -3,7 +3,7 @@
  * Mollie client.
  *
  * @author    Pronamic <info@pronamic.eu>
- * @copyright 2005-2024 Pronamic
+ * @copyright 2005-2025 Pronamic
  * @license   GPL-3.0-or-later
  * @package   Pronamic\WordPress\Mollie
  */
@@ -241,29 +241,6 @@ class Client {
 	}
 
 	/**
-	 * Create order.
-	 *
-	 * @param OrderRequest $request Order request.
-	 * @return Order
-	 */
-	public function create_order( OrderRequest $request ) {
-		$object = $this->post(
-			$this->get_url(
-				'orders',
-				[],
-				[
-					'embed' => 'payments',
-				]
-			),
-			$request
-		);
-
-		$order = Order::from_json( $object );
-
-		return $order;
-	}
-
-	/**
 	 * Create payment.
 	 *
 	 * @param PaymentRequest $request Payment request.
@@ -278,51 +255,6 @@ class Client {
 		$payment = Payment::from_json( $object );
 
 		return $payment;
-	}
-
-	/**
-	 * Create shipment for an order.
-	 *
-	 * @param string $order_id Order ID.
-	 * @return Shipment
-	 */
-	public function create_shipment( $order_id ) {
-		$response = $this->post(
-			$this->get_url(
-				'orders/*orderId*/shipments',
-				[
-					'*orderId*' => $order_id,
-				]
-			)
-		);
-
-		$shipment = Shipment::from_json( $response );
-
-		return $shipment;
-	}
-
-	/**
-	 * Get order.
-	 *
-	 * @param string $order_id Order ID.
-	 * @return Order
-	 */
-	public function get_order( string $order_id ): Order {
-		$response = $this->get(
-			$this->get_url(
-				'orders/*id*',
-				[
-					'*id*' => $order_id,
-				],
-				[
-					'embed' => 'payments',
-				]
-			)
-		);
-
-		$order = Order::from_json( $response );
-
-		return $order;
 	}
 
 	/**
@@ -551,27 +483,6 @@ class Client {
 				'payments/*id*/refunds',
 				[
 					'*id*' => $payment_id,
-				]
-			),
-			$refund_request
-		);
-
-		return Refund::from_json( $response );
-	}
-
-	/**
-	 * Create order refund.
-	 *
-	 * @param string             $order_id       Mollie order ID.
-	 * @param OrderRefundRequest $refund_request Order refund request.
-	 * @return Refund
-	 */
-	public function create_order_refund( string $order_id, OrderRefundRequest $refund_request ): Refund {
-		$response = $this->post(
-			$this->get_url(
-				'orders/*orderId*/refunds',
-				[
-					'*orderId*' => $order_id,
 				]
 			),
 			$refund_request
