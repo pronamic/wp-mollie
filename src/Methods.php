@@ -261,14 +261,6 @@ class Methods {
 	const SWISH = 'swish';
 
 	/**
-	 * Constant for the Sofort method.
-	 *
-	 * @deprecated 1.9.0
-	 * @var string
-	 */
-	const SOFORT = 'sofort';
-
-	/**
 	 * Constant for the Trustly method.
 	 *
 	 * @var string
