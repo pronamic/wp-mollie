@@ -142,6 +142,16 @@ class Client {
 			$args['body'] = \wp_json_encode( $data );
 		}
 
+		/**
+		 * Use Playground CORS proxy.
+		 *
+		 * @link https://github.com/pronamic/wp-pronamic-pay/issues/421#issuecomment-3184267100
+		 * @link https://github.com/WordPress/wordpress-playground/pull/2007
+		 */
+		if ( defined( 'USE_PLAYGROUND_CORS_PROXY' ) && true === USE_PLAYGROUND_CORS_PROXY ) {
+			$args['headers']['X-Cors-Proxy-Allowed-Request-Headers'] = 'Authorization';
+		}
+
 		$response = Http::request( $url, $args );
 
 		$data = $response->json();
