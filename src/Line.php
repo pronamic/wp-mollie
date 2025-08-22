@@ -184,7 +184,7 @@ class Line implements JsonSerializable {
 	/**
 	 * Create line from JSON string.
 	 *
-	 * @param object $json JSON object.
+	 * @param mixed $json JSON object.
 	 * @return Line
 	 * @throws \InvalidArgumentException Throws invalid argument exception when input JSON is not an object.
 	 */

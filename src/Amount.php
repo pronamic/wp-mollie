@@ -63,7 +63,7 @@ class Amount implements JsonSerializable, RemoteSerializable {
 	/**
 	 * Create amount from JSON string.
 	 *
-	 * @param object $json JSON object.
+	 * @param mixed $json JSON object.
 	 * @return Amount
 	 * @throws InvalidArgumentException Throws invalid argument exception when input JSON is not an object.
 	 */
