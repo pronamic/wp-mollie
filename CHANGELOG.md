@@ -7,6 +7,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.10.0] - 2025-08-22
+
+### Changed
+
+- Updated to PHP 8.2 and requirements ([d2a17bd](https://github.com/pronamic/wp-mollie/commit/d2a17bdb067d961f2fe416f1770e08fa7b1b8930))
+- Added `X-Cors-Proxy-Allowed-Request-Headers` header if USE_PLAYGROUND_CORS_PROXY is true. ([131b961](https://github.com/pronamic/wp-mollie/commit/131b96174c228a6431c770009ba1f5e3f3c3bf21))
+- Copyright 2025 ([31a2b0d](https://github.com/pronamic/wp-mollie/commit/31a2b0df617c9e69689c64487d218a10fd2af2ed))
+
+### Added
+
+- Added new Mollie methods. ([30eb05a](https://github.com/pronamic/wp-mollie/commit/30eb05a794b23370ad3702ae31520ee58406af64))
+
+### Removed
+
+- Removed order related code. ([9951784](https://github.com/pronamic/wp-mollie/commit/99517842e8a4442eee767b65c4ee2c6d84e50cee))
+- Removed Sofort method, no longer supported ([ea7aa97](https://github.com/pronamic/wp-mollie/commit/ea7aa9787987d99e76dc8d5da2303188ba6056dd))
+
+### Composer
+
+- Changed `php` from `>=8.1` to `>=8.2`.
+
+Full set of changes: [`1.9.0...1.10.0`][1.10.0]
+
+[1.10.0]: https://github.com/pronamic/wp-mollie/compare/v1.9.0...v1.10.0
+
 ## [1.9.0] - 2025-06-19
 
 ### Added
