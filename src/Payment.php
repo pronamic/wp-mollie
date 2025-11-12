@@ -76,9 +76,9 @@ class Payment extends BaseResource {
 	/**
 	 * The date and time the payment will expire, in ISO 8601 format. This parameter is omitted if the payment can no longer expire.
 	 *
-	 * @var DateTimeInterface
+	 * @var null|DateTimeInterface
 	 */
-	private $expires_at;
+	private $expires_at = null;
 
 	/**
 	 * The amount of the payment, e.g. {"currency":"EUR", "value":"100.00"} for a €100.00 payment.
@@ -370,7 +370,7 @@ class Payment extends BaseResource {
 	/**
 	 * Get expires at.
 	 *
-	 * @return DateTimeInterface
+	 * @return null|DateTimeInterface
 	 */
 	public function get_expires_at() {
 		return $this->expires_at;
@@ -379,10 +379,10 @@ class Payment extends BaseResource {
 	/**
 	 * Set expires at.
 	 *
-	 * @param DateTimeInterface $expires_at Expiry date.
+	 * @param null|DateTimeInterface $expires_at Expiry date.
 	 * @return void
 	 */
-	public function set_expires_at( DateTimeInterface $expires_at ) {
+	public function set_expires_at( ?DateTimeInterface $expires_at = null ) {
 		$this->expires_at = $expires_at;
 	}
 
@@ -439,8 +439,10 @@ class Payment extends BaseResource {
 			$object_access->get_property( '_links' ),
 		);
 
-		if ( $object_access->has_property( 'expiresAt' ) ) {
-			$payment->set_expires_at( new DateTimeImmutable( $object_access->get_property( 'expiresAt' ) ) );
+		$expires_at_value = $object_access->get_optional( 'expiresAt' );
+
+		if ( null !== $expires_at_value ) {
+			$payment->set_expires_at( new DateTimeImmutable( $expires_at_value ) );
 		}
 
 		$payment->set_customer_id( $object_access->get_optional( 'customerId' ) );
