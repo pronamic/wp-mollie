@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.10.1] - 2025-11-12
+
+### Changed
+
+- Marked the `Payment` property `expires_at` as nullable [#15](https://github.com/pronamic/wp-mollie/issues/15)
+
+Full set of changes: [`1.10.0...1.10.1`][1.10.1]
+
+[1.10.1]: https://github.com/pronamic/wp-mollie/compare/v1.10.0...v1.10.1
+
 ## [1.10.0] - 2025-08-22
 
 ### Changed
