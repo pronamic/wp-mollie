@@ -439,7 +439,7 @@ class Payment extends BaseResource {
 			$object_access->get_property( '_links' ),
 		);
 
-	    $expires_at_value = $object_access->get_optional( 'expiresAt' );
+		$expires_at_value = $object_access->get_optional( 'expiresAt' );
 
 		if ( null !== $expires_at_value ) {
 			$payment->set_expires_at( new DateTimeImmutable( $expires_at_value ) );
