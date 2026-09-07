@@ -73,34 +73,6 @@ class PaymentRequestTest extends TestCase {
 	}
 
 	/**
-	 * Test due date.
-	 *
-	 * @throws \Exception Throws exception on date error.
-	 */
-	public function test_due_date() {
-		$due_date = new \DateTime( '+12 days' );
-
-		$this->request->due_date = $due_date;
-
-		$this->assertEquals(
-			[
-				'amount'       => $this->request->amount->jsonSerialize(),
-				'description'  => 'Test',
-				'redirectUrl'  => 'https://example.com/mollie-redirect/',
-				'webhookUrl'   => 'https://example.com/mollie-webhook/',
-				'method'       => 'ideal',
-				'metadata'     => 'meta',
-				'locale'       => 'nl_NL',
-				'issuer'       => 'ideal_INGBNL2A',
-				'dueDate'      => $due_date->format( 'Y-m-d' ),
-				'customerId'   => 'cst_8wmqcHMN4U',
-				'sequenceType' => 'first',
-			],
-			(array) $this->request->jsonSerialize()
-		);
-	}
-
-	/**
 	 * Test billing metadata.
 	 *
 	 * @link https://docs.mollie.com/reference/v2/payments-api/create-payment

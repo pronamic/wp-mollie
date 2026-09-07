@@ -10,7 +10,6 @@
 
 namespace Pronamic\WordPress\Mollie;
 
-use DateTimeInterface;
 use JsonSerializable;
 
 /**
@@ -151,16 +150,6 @@ class PaymentRequest implements JsonSerializable, RemoteSerializable {
 	 */
 	#[RemoteApiProperty( 'metadata' )]
 	public $metadata = null;
-
-	/**
-	 * The date the payment should expire, in YYYY-MM-DD format. Please note: the minimum date
-	 * is tomorrow and the maximum date is 100 days after tomorrow.
-	 *
-	 * @link https://docs.mollie.com/reference/v2/payments-api/create-payment
-	 * @var DateTimeInterface|null
-	 */
-	#[RemoteApiProperty( 'dueDate' )]
-	public ?DateTimeInterface $due_date = null;
 
 	/**
 	 * Customer ID for Mollie checkout.
