@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] - 2026-09-07
+
+### Changed
+
+- **Breaking:** Moved the `due_date` property from `PaymentRequest` to `BankTransferPaymentRequest`, because Mollie only supports due dates for bank transfer payments. Use `BankTransferPaymentRequest` when setting a due date.
+
+Full set of changes: [`1.10.1...2.0.0`][2.0.0]
+
+[2.0.0]: https://github.com/pronamic/wp-mollie/compare/v1.10.1...v2.0.0
+
 ## [1.10.1] - 2025-11-12
 
 ### Changed
