@@ -11,6 +11,7 @@
 namespace Pronamic\WordPress\Mollie;
 
 use Pronamic\WordPress\Money\Money;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
@@ -30,8 +31,8 @@ class AmountTransformerTest extends TestCase {
 	 * @param Money  $pronamic_money    Pronamic money.
 	 * @param string $expected_currency Expected currency.
 	 * @param string $expected_value    Expected value.
-	 * @dataProvider amount_provider
 	 */
+	#[DataProvider( 'amount_provider' )]
 	public function test_transform( $pronamic_money, $expected_currency, $expected_value ) {
 		$amount_transformer = new AmountTransformer();
 
@@ -46,7 +47,7 @@ class AmountTransformerTest extends TestCase {
 	 *
 	 * @return array
 	 */
-	public function amount_provider() {
+	public static function amount_provider() {
 		return [
 			[ new Money( 100, 'EUR' ), 'EUR', '100.00' ],
 			[ new Money( 5, 'BHD' ), 'BHD', '5.000' ],
